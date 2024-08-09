@@ -5,4 +5,4 @@
 
 # 联系方式
 无法直接提供，视情况于b站私信或酷安发送。
-Bilibili: Ayyyyano / CoolApk: 小小小对对
+Bilibili: [@Ayyyyano](https://space.bilibili.com/501335897) / CoolApk: @小小小对对
