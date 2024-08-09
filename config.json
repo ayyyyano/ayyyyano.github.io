@@ -2,5 +2,8 @@
     "title":"A_YANO",
     "subTitle":"Ayyyyano 的测试站点",
     "avatarUrl":"https://avatars.githubusercontent.com/u/90670998?v=4",
-    "GMEEK_VERSION":"last"
+    "GMEEK_VERSION":"last",
+    "startSite":"08/09/2024",
+    "onePageListNum":10,
+    "singlePage":["about"],
 }
