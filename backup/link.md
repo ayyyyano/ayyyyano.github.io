@@ -3,4 +3,4 @@
 [医忏](https://yichan521.github.io/)
 
 #### Others
-暂无
+[关于我](https://ayyyyano.github.io/about.html)
