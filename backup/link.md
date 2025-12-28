@@ -1,6 +1,6 @@
 # 友情链接
 #### Friends
-[医忏](https://yichan521.github.io/)
+暂无
 
 #### Others
 [关于我](https://ayyyyano.github.io/about.html)
