@@ -5,7 +5,7 @@
     "GMEEK_VERSION":"last",
     "startSite":"08/09/2024",
     "onePageListNum":10,
-    "singlePage":["about", "link"]
-    "i18n":"CN",
+    "singlePage":["about", "link"],
     "bottomText":"转载文章请注明出处 ;-)",
+    "i18n":"CN"
 }
