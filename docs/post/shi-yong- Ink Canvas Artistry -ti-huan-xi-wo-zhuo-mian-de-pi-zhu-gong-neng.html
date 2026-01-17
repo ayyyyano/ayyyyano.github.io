@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/90670998?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="# 增强希沃桌面批注体验 —— 使用 Ink Canvas Artistry 替换希沃桌面的批注功能
+### 解决希沃桌面批注打开慢、效率低的问题
+#### 前言
+没有意外的话，本文将同时在[智教联盟](https://forum.smart-teach.cn/t/ica)、GitHub 与 Bilibili 上同时发布。">
+<meta property="og:title" content="使用 Ink Canvas Artistry 替换希沃桌面的批注功能">
+<meta property="og:description" content="# 增强希沃桌面批注体验 —— 使用 Ink Canvas Artistry 替换希沃桌面的批注功能
+### 解决希沃桌面批注打开慢、效率低的问题
+#### 前言
+没有意外的话，本文将同时在[智教联盟](https://forum.smart-teach.cn/t/ica)、GitHub 与 Bilibili 上同时发布。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ayyyyano.github.io/post/shi-yong-%20Ink%20Canvas%20Artistry%20-ti-huan-xi-wo-zhuo-mian-de-pi-zhu-gong-neng.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/90670998?v=4">
+<title>使用 Ink Canvas Artistry 替换希沃桌面的批注功能</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">使用 Ink Canvas Artistry 替换希沃桌面的批注功能</h1>
+<div class="title-right">
+    <a href="https://ayyyyano.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/ayyyyano/ayyyyano.github.io/issues/14" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>增强希沃桌面批注体验 —— 使用 Ink Canvas Artistry 替换希沃桌面的批注功能</h1>
+<h3>解决希沃桌面批注打开慢、效率低的问题</h3>
+<h4>前言</h4>
+<p>没有意外的话，本文将同时在<a href="https://forum.smart-teach.cn/t/ica" rel="nofollow">智教联盟</a>、GitHub 与 Bilibili 上同时发布。似乎半年没写过新文章了，那就来一个大伙都能看懂的。我想肯定有很多人认为这篇文章的做法没有实际用处，而且自己也不知道有没有前人发布过类似的内容，但本文的东西大部分是我一步步摸索出来的，没指望能收获什么浏览量，就当是我的一次测试记录吧。</p>
+<p><strong>测试环境</strong>: SEEWO BG86EG (MT51C) 、Windows 10 1703 (10.0.15063)<br>
+<strong>所需软件</strong>: Microsoft Office 2024、SEEWO FAMILY BUCKET 8.1.0.30、Ink Canvas Artistry 4.9.4</p>
+<p>不知道看这篇文章的各位·，在班级内使用 6.5 代机及以后的希沃一体机时，是否遇到过这样的问题: 老师授课时点击了侧边栏，好不容易看完了动画，点击批注功能之后又要卡顿好一会儿才能打开批注。展开动画和打开批注用的时间最少需要 5 秒 ，属于是既没有观感又没有效率。</p>
+<p>面对这一严重问题，班里老师总是为此苦恼，最终他们一致选择在课前打开希沃白板，然后最小化，使用桌面的 EN 批注工具。但这样做也有不小问题。希沃白板自身的启动速度并不算快，光打开白板这一动作在班里一体机上也需要花费至少 10 秒的时间。另外论资源占用和美观性，甚至还不如侧边栏批注。</p>
+<p>于是，我在 Github 上进行搜索，发现了 Ink Canvas 和基于它的几个衍生项目。经过一番筛选，我认为最适合采用的就是 <a href="https://bgithub.xyz/InkCanvas/Ink-Canvas-Artistry" rel="nofollow">Ink Canvas Artistry</a> (下文简称为 ICA ) 。它在 Ink Canvas 上添加了很多实用功能，并且由于该项目已经停更，一般来说不需要考虑后续的文件替换操作。于是，我就下载了它的便携版并解压到 D 盘的一个文件夹下，经过几天班里老师的测试，其功能已经能够满足我班当下的使用需求，但还有很多优化的空间。本文就从我遇到的问题出发，给出我目前认为较好的解决方案。</p>
+<h4>我遇到的问题</h4>
+<ol>
+<li>启用软件内置的自启动后，在使用希沃桌面助手的一键下课/侧边栏进程管理/上滑菜单的关闭应用等功能后，软件入口难以被老师发现，从而必须重启电脑继续教学。</li>
+<li>在部分情况下，ICA 的桌面窗口/ PPT 功能会被当前应用覆盖，导致无法进行批注或PPT翻页等功能。</li>
+<li>在更换前台放映的课件时，ICA 有概率崩溃，未能切换课件状态，进而导致翻页等一系列功能异常。</li>
+</ol>
+<h4>开始吧</h4>
+<p>既然我们已经有了更好的批注方案，我对上面几个问题的想法便是: 我直接把希沃桌面的批注替换为 ICA 吧。是的，我开始的想法正如标题所示，我后续进行的操作也同样。但在执行过程中，我遇到了几个新的问题，下文会一一列举并给出它们的解决方法。</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/6085d5f0-7fb4-4a69-a896-19060a534d44"><img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/6085d5f0-7fb4-4a69-a896-19060a534d44" style="max-width: 100%; height: auto; max-height: 1080px;"></a></p>
+最初，我试着将 ICA 的文件直接移动到希沃桌面批注工具的目录下 (位于"C:\Program Files (x86)\Seewo\MiniApps\DesktopAnnotation") ，然后修改 ICA 的主程序名为"DesktopAnnotation.exe" ，并备份原来的主程序为"DesktopAnnotation.exe.bak" (最好也留一份 ICA 的主程序备份，便于在希沃桌面更新后还原配置) ，但这会导致 ICA 无法正常工作。详细表现为：在 ICA 设置中更改的配置不能生效、ICA 窗口位置严重偏移 (正常来说是左右居中，高度比只比任务栏高一点) 、手写墨迹全部被识别为橡皮擦......大概就是完全用不了吧。
+<p>很快，我便发现了问题所在，在 Program Files 文件夹下的应用一般来说是没有普通应用的权限的，会受到更多的限制。这也是现在不少 App 选择把自身安装目录设置在 AppData 而非 Program Files 的原因。这意味着我们无法将 ICA 移动到希沃桌面批注的文件夹下。本文到此结束。(划掉)</p>
+<h4>真的要止步于此吗?</h4>
+<p>其实不然，我们还是可以通过某些方式提升文件夹下应用的权限。这里我使用的方案是: 更改上级文件夹的所有者为当前登录用户 (例如 Administrator ) ，并且禁用继承，以及给予当前用户完全控制的权限。这样我们就可以规避一部分 Program Files 下的权限问题了。操作如下。<br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/6316fa22-d916-4aea-916d-b78dbe584af2"><img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/6316fa22-d916-4aea-916d-b78dbe584af2" style="max-width: 100%; height: auto; max-height: 1080px;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/e0c90662-3bcd-44a0-a084-1e0f49176342"><img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/e0c90662-3bcd-44a0-a084-1e0f49176342" style="max-width: 100%; height: auto; max-height: 1080px;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/10bb7b58-333d-4f7e-b33a-bdf35985e3f6"><img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/10bb7b58-333d-4f7e-b33a-bdf35985e3f6" style="max-width: 100%; height: auto; max-height: 1080px;"></a></p>
+<ol>
+<li>选中"C:\Program Files (x86)\Seewo\MiniApps\DesktopAnnotation"文件夹，右键"属性" -&gt; "安全" -&gt; "高级"。</li>
+<li>在"所有者"旁点击"更改"，输入当前用户名 (如 Administrator ) ，检查名称，确定，勾选"替换子容器和对象的所有者"。</li>
+<li>再次回到"安全"选项卡，点击"禁用继承"，选择"从此对象中删除所有已继承的权限"。在"禁用继承"上方点击添加用户，左上角"选择主体"，输入当前用户名，检查名称，完成后一路确定即可。</li>
+<li>重启系统。</li>
+</ol>
+<p>经过上面的操作，再次运行改名后的 ICA 主程序，发现可以正常运行了。此时能够保存设置项，窗口位置与橡皮擦的问题也得到了解决。我们也可以通过桌面助手的批注以及侧边栏进入 ICA 。但这样只解决了第一个问题，如果保留原来的自启动设置，开机自启仍然会出现 ICA 窗口被覆盖的情况。若关闭进程通过侧边栏或桌面助手打开，它就不会被其它窗口覆盖了 (系统/ UWP 应用除外)，但 PowerPoint 在放映 PPT 时不会出现 PPT 功能，和正常状态没有区别。</p>
+<p>上文基本解决了 ICA 因放于 Program Files 文件夹下从而导致的权限不足问题，现在可以视作它位于普通的文件夹下了。要解决窗口置顶问题，不考虑 UIAccess 的话，只需要让主程序以管理员权限运行即可。操作如下。<br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/598696f8-8440-4446-aa39-ace8c7640042"><img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/598696f8-8440-4446-aa39-ace8c7640042" style="max-width: 100%; height: auto; max-height: 1080px;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/4e7f5d1c-2c6c-4ea3-ae57-75c8a0fc6180"><img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/4e7f5d1c-2c6c-4ea3-ae57-75c8a0fc6180" style="max-width: 100%; height: auto; max-height: 1080px;"></a></p>
+<ol>
+<li>进入 ICA 主程序，禁用内置的自启动功能</li>
+<li>然后在设置中搜索计划任务，进入任务计划程序，创建一个基本任务。触发器选择当前用户登录时，操作选启动程序，程序就是刚才我们改好的 C:\Program Files (x86)\Seewo\MiniApps\DesktopAnnotation\DesktopAnnotation.exe 。</li>
+<li>添加完成后双击刚才创建的任务进入配置页面，勾选使用最高权限运行。<br>
+重启系统后不出意外就是用最高权限运行 ICA 了。使用桌面助手或侧边栏打开同理。那么，我们只需要解决 PowerPoint 出现的问题就可以了。</li>
+</ol>
+<p>这里我们就不对 ICA 下手了，让 PowerPoint 也使用管理员权限运行就可以解决Office COM相关的问题。这里我们需要修改注册表以实现 COM 接口的成功识别。操作如下。<br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/13deecd0-658e-4d18-9c06-cb47d4fbe9b8"><img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/13deecd0-658e-4d18-9c06-cb47d4fbe9b8" style="max-width: 100%; height: auto; max-height: 1080px;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/1e767939-a826-4196-9995-30656b98b26b"><img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/1e767939-a826-4196-9995-30656b98b26b" style="max-width: 100%; height: auto; max-height: 1080px;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/304ee0d4-a535-428d-a92b-f8901499a6ce"><img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/304ee0d4-a535-428d-a92b-f8901499a6ce" style="max-width: 100%; height: auto; max-height: 1080px;"></a></p>
+<ol>
+<li>Win+R 输入"regedit"</li>
+<li>打开"HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"，在右侧新建一个字符串值，名称为 PowerPoint 主程序所在的文件路径 (例如: "C:\Program Files\Microsoft Office\Root\Office16\POWERPNT.EXE" 若使用的是 WPS Office ，则查找"ksolaunch.exe") ，双击在数值数据填入"~ RUNASADMIN"。</li>
+<li>打开"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"，再新建一个字符串值，名称和数值数据同上。</li>
+<li>修改完成后重启系统。</li>
+</ol>
+<p>到这里，修改已经全部完成了。ICA 已实现了最高权限自启，若老师通过一键下课等关闭了 ICA ，只需点击侧边栏的批注功能即可重新打开。PPT 功能，指定软件自动收纳等工作正常。</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://ayyyyano.github.io">Ayano</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("08/09/2024"!=""){
+    var startSite=new Date("08/09/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","ayyyyano/ayyyyano.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+
+
+</html>
