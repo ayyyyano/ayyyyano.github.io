@@ -2,6 +2,8 @@
     "title":"Ayano",
     "subTitle":"「幸せ」ってなんだか不思議，明日のこと、好きになれる。",
     "avatarUrl":"https://avatars.githubusercontent.com/u/90670998?v=4",
+    "allHead":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>",
+    "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>",
     "GMEEK_VERSION":"last",
     "startSite":"08/09/2024",
     "onePageListNum":10,
