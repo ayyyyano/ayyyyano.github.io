@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>米学长检测器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #ffd700, #ffaa00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 24px;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .start-card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .test-card {
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .start-card h2 {
+            font-size: 1.4rem;
+        }
+
+        .start-card p {
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #ffd700, #ffaa00);
+            color: #1a1a2e;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffd700, #ffaa00);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .question-counter {
+            text-align: center;
+            color: #888;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            text-align: center;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            padding: 12px 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .option:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        .option.selected {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: #ffd700;
+        }
+
+        .result-card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .result-icon {
+            font-size: 3rem;
+        }
+
+        .result-title {
+            font-size: 1.6rem;
+        }
+
+        .result-score {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .result-desc {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        .result-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .result-bar-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .result-bar-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 16px 0 0 0;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .level-indicator {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+        }
+
+        .level-item {
+            text-align: center;
+            padding: 8px;
+            border-radius: 10px;
+            flex: 1;
+        }
+
+        .level-mihei { background: rgba(100, 100, 255, 0.2); }
+        .level-luren { background: rgba(100, 200, 100, 0.2); }
+        .level-xiaozi { background: rgba(255, 150, 50, 0.2); }
+
+        .level-item .score-range {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .level-item .level-name {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">米学长检测器</div>
+            <div class="subtitle">通过 25 道专业问题，科学检测你的"学长"程度</div>
+        </header>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">25</div>
+                <div class="stat-label">道专业题目</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">种结果类型</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">≤5</div>
+                <div class="stat-label">分钟完成</div>
+            </div>
+        </div>
+
+        <div id="start-page" class="card start-card fade-in">
+            <h2>你是米学长吗？</h2>
+            <p>通过 25 道精心设计的问题，检测你对米哈游及其产品的认知态度。<br>看看你在"米学长谱系"上处于什么位置。</p>
+            
+            <div class="level-indicator">
+                <div class="level-item level-mihei">
+                    <div class="score-range">0-40分</div>
+                    <div class="level-name">米黑</div>
+                </div>
+                <div class="level-item level-luren">
+                    <div class="score-range">41-75分</div>
+                    <div class="level-name">吃瓜路人</div>
+                </div>
+                <div class="level-item level-xiaozi">
+                    <div class="score-range">76-100分</div>
+                    <div class="level-name">米学长</div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" onclick="startTest()">立即开始</button>
+        </div>
+
+        <div id="test-page" class="card test-card hidden">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="question-counter" id="question-counter">第 1 题 / 共 20 题</div>
+            <div class="question-text" id="question-text"></div>
+            <div class="options" id="options"></div>
+        </div>
+
+        <div id="result-page" class="card result-card hidden">
+            <div class="result-icon" id="result-icon"></div>
+            <div class="result-title" id="result-title"></div>
+            <div class="result-score" id="result-score"></div>
+            <div class="result-bar">
+                <div class="result-bar-fill" id="result-bar-fill"></div>
+            </div>
+            <div class="result-bar-labels">
+                <span>米黑</span>
+                <span>吃瓜路人</span>
+                <span>米学长</span>
+            </div>
+            <div class="result-desc" id="result-desc"></div>
+            <button class="btn btn-primary" onclick="restartTest()">重新测试</button>
+        </div>
+
+        <footer>
+            <p>本测试仅供娱乐，请理性看待结果</p>
+        </footer>
+    </div>
+
+    <script>
+        const questions = [
+            "原神的出现是国产游戏的黎明时刻。",
+            "相比于其他国产游戏大厂，米哈游更有技术，也更纯粹。",
+            "原神项目组比玩家更懂游戏的长线运营。",
+            "为了符合世界观设定和保持仪式感，原神不应该上线随身合成台或每日委托奖励领取，而是必须与大世界交互。",
+            "很多被吐槽的问题如剧情站桩对话、人物动作单一、贴图画质低、不开放120帧等，并不是官方偷懒或技术不够，而是为了内存、性能、兼容性不得不做出的妥协。",
+            "从未有过一款国产文化产品像原神一样遭如此大规模，高密度，有组织的围攻，碰瓷，污蔑。",
+            "部分玩家的声音太尖锐了，导致原神项目组无法分辨哪些是真实的声音。",
+            "原神的文化输出颇有成效，扩大了中国的文化软实力和影响力。",
+            "我愿意为原神中优秀的内容而付费。",
+            "我认为原神付费内容的定价是不合理的。",
+            "原神大小月卡性价比很高，我每个月/版本都买。",
+            "相较于原神之前的二游，原神的卡池机制是进步的。",
+            "鸣潮比原神晚发布四年，但前者游戏质量却远不及后者。",
+            "一些竞品厂商和粉丝恶意抹黑原神并攻击无辜玩家，是让社区环境恶化的罪魁祸首。",
+            "吃内鬼流量和黑流量的博主被惩罚是罪有应得。",
+            "就算玩家氪的再多，从他骂原神的那一刻，贡献就清零了。",
+            "带节奏的老玩家才是游戏发展的最大阻碍。",
+            "龙王异常高速旋转本身就是BUG，官方修复它有正当理由，只是因为舆论才不得不回退。",
+            "老角色建模优化之后，她就不是原来那个她了。",
+            "散兵的剧情本身没有太大问题，很多人的看法被节奏影响了。",
+            "原神不应该增加剧情跳过功能。",
+            "每次版本更新后，我会积极完成活动和任务，认真看剧情的每一句话，不愿意错过任何一个彩蛋。",
+            "我喜欢挑战原神中的高难玩法，如幽境危战难度6、幻想真境剧诗月喻模式，并以此为游戏目标。",
+            "我的大部分地图探索度已满。",
+            "海灯节比现实更有年味。"
+        ];
+
+        const options = [
+            { text: "非常同意", score: 4 },
+            { text: "同意", score: 3 },
+            { text: "中立/不确定", score: 2 },
+            { text: "不同意", score: 1 },
+            { text: "非常不同意", score: 0 }
+        ];
+
+        let currentQuestion = 0;
+        let totalScore = 0;
+        let isProcessing = false;
+        let selections = [];
+        let startTime = 0;
+
+        function startTest() {
+            currentQuestion = 0;
+            totalScore = 0;
+            isProcessing = false;
+            selections = [];
+            startTime = Date.now();
+            document.getElementById('start-page').classList.add('hidden');
+            document.getElementById('test-page').classList.remove('hidden');
+            document.getElementById('test-page').classList.add('fade-in');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progress-fill').style.width = progress + '%';
+            document.getElementById('question-counter').textContent = `第 ${currentQuestion + 1} 题 / 共 ${questions.length} 题`;
+            document.getElementById('question-text').textContent = questions[currentQuestion];
+
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+
+            options.forEach((option, index) => {
+                const optionEl = document.createElement('div');
+                optionEl.className = 'option';
+                optionEl.textContent = option.text;
+                optionEl.onclick = () => selectOption(index);
+                optionsContainer.appendChild(optionEl);
+            });
+        }
+
+        function selectOption(index) {
+            if (isProcessing) return;
+            isProcessing = true;
+
+            const optionEls = document.querySelectorAll('.option');
+            optionEls.forEach(el => el.classList.remove('selected'));
+            optionEls[index].classList.add('selected');
+
+            setTimeout(() => {
+                // 第10题是反向题
+                if (currentQuestion === 9) {
+                    totalScore += (4 - options[index].score);
+                } else {
+                    totalScore += options[index].score;
+                }
+                selections.push(index);
+                currentQuestion++;
+
+                if (currentQuestion < questions.length) {
+                    showQuestion();
+                    isProcessing = false;
+                } else {
+                    showResult();
+                }
+            }, 300);
+        }
+
+        function showResult() {
+            document.getElementById('test-page').classList.add('hidden');
+            document.getElementById('result-page').classList.remove('hidden');
+            document.getElementById('result-page').classList.add('fade-in');
+
+            let level, icon, desc, color;
+
+            // 计算答题总耗时（秒）
+            const totalTime = (Date.now() - startTime) / 1000;
+
+            // 检测是否全选非常同意或非常不同意
+            const allVeryAgree = selections.every(selection => selection === 0);
+            const allVeryDisagree = selections.every(selection => selection === 4);
+
+            if (totalTime < 30) {
+                level = "乱答的";
+                icon = "❓";
+                color = "#999";
+                desc = "正常作答时间应大于30秒";
+            } else if (allVeryAgree || allVeryDisagree) {
+                level = "串";
+                icon = "😅";
+                color = "#ff6b6b";
+                desc = "一眼丁真，鉴定为串";
+            } else if (totalScore <= 40) {
+                level = "米黑";
+                icon = "💙";
+                color = "#6464ff";
+                desc = "你对米哈游及其产品持批评态度，可能是被伤过的老玩家，或者是对游戏行业有自己独特见解的人。你对《原神》等米哈游产品并不感冒，甚至可能有些反感。你的观点也许与主流玩家群体相左，但这并不代表你的看法没有价值。";
+            } else if (totalScore <= 75) {
+                level = "吃瓜路人";
+                icon = "💚";
+                color = "#64c864";
+                desc = "你对米哈游及其产品持中立态度，既不是狂热粉丝，也不是黑粉。你可能玩过《原神》或其他米哈游游戏，但并不会过度维护或攻击。你能够理性看待游戏的优缺点，保持自己的独立判断。这是最健康的心态。";
+            } else {
+                level = "米学长";
+                icon = "🧡";
+                color = "#ff9632";
+                desc = "你对米哈游及其产品有着高度的认同和支持。你可能是《原神》的忠实玩家，愿意为游戏付费，并且对游戏的各种决策都持理解和支持态度。你对米哈游有着深厚的感情，愿意为其辩护。但也要注意保持理性，客观看待问题。";
+            }
+
+            document.getElementById('result-icon').textContent = icon;
+            document.getElementById('result-title').textContent = `鉴定结果：${level}`;
+            document.getElementById('result-score').textContent = `${totalScore} 分`;
+            document.getElementById('result-desc').textContent = desc;
+
+            const barFill = document.getElementById('result-bar-fill');
+            const percentage = (totalScore / 100) * 100;
+            barFill.style.width = percentage + '%';
+            barFill.style.background = color;
+        }
+
+        function restartTest() {
+            document.getElementById('result-page').classList.add('hidden');
+            document.getElementById('start-page').classList.remove('hidden');
+            document.getElementById('start-page').classList.add('fade-in');
+        }
+    </script>
+</body>
+</html>
