@@ -3,6 +3,7 @@
 25.7.5: Bilibili 原文发布。
 26.1.1: 归档。不再更新。
 26.3.12: 文章转移到 Github 。未进行其它改动。
+<img width="1026" height="686" alt="Image" src="https://github.com/user-attachments/assets/6f48b540-08fa-41b7-a331-f16228ee9655" />
 
 ### 前言
 步骤很简单，解锁BL后在ColorOS 7(A10)原包下直接通过fastboot刷入system，之后格data补v5宽容和vbmeta即可。写文章是方便让不大了解机型情况的人刷入，且不会出现解密失败或开机系统破坏警告。
