@@ -1,5 +1,5 @@
 # OPPO A9 刷入 PixelExperience 13 GSI
-### 说在前面
+### 前言
 1. (26.3.12 / Bilibili 发布时间: 25.4.20) 本文已归档。不再发布任何更新。你仍然可以提出疑问或发布使用体验。但我可能无法给予有效答复。
 2. 主要是记录自己的踩坑点。步骤仅为辅助说明。本篇记录了我根据其他教程或现有方案进行操作出现问题时的解决方案。
 因此我建议优先参考酷安或其它平台上的一些相关教程。
@@ -7,7 +7,7 @@
 [酷安@雨空_RainSky OPPO A9（Helio P70）解bl与刷Magisk教程](https://www.coolapk.com/feed/38984351?shareKey=NTk4OTJmZDM1ODU0NjgwM2JkMDc~&shareUid=2529353&shareFrom=com.coolapk.market_14.3.0)
 3. 需要一定的刷机基础。对操作不当出现的问题个人概不负责。
 
-### 资源下载
+### 下载
 [123 云盘 (提取码: XkIU)](https://www.123pan.com/s/kCTTjv-qGL8H.html)
 
 ### 展示
