@@ -13,6 +13,8 @@
 ### 展示
 ![Image](https://github.com/user-attachments/assets/8f68dfe2-0d34-4d33-a438-bfd6e85e38dc)
 
+<img width="1026" height="686" alt="Image" src="https://github.com/user-attachments/assets/8cc9bba8-e93d-4091-92c6-d4f4512078fe" />
+
 ### 步骤
 #### 检查设备的安卓版本
 如果你运行的是Android 10 (ColorOS 7.1)，那么请直接跳至第二步。
