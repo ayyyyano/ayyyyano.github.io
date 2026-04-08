@@ -1,6 +1,5 @@
-<h2 align="center">关于 / 联系我</h2>
-<h4 align="center">这里是 Ayano 的小站。</h4>
-<h4 align="center">谢谢你在人群中找到我。</h4>
+<h2 align="center">关于 / 联系</h2>
+<h4 align="center">这里是 Ayano 的小站 | 谢谢你在人群中找到我</h4>
 
 ## 🔭 项目
 见我的 Github: [主页](https://github.com/ayyyyano)
