@@ -12,5 +12,5 @@
 至于怎么使用这个账号，完全取决于你们，不要违反上面的要求就行。
 
 #### 联系我
-在 Bilibili 私信 [@桃井爱莉kiss](https://space.bilibili.com/501335897) 了解详细信息。
-或联系我的 [QQ 账号](https://qm.qq.com/q/UcbvholIYe?from=tim)。
+在 Bilibili 私信 [我的 Bilibili 账号](https://space.bilibili.com/501335897) 了解详细信息。
+或前往关于页面查看更多联系方式。出于隐私原因部分内容不再公开。
