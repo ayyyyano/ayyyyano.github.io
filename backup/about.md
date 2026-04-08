@@ -1,21 +1,28 @@
-<h2 align="center">大家好啊◝(⑅•ᴗ•⑅)◜..° 👋</h2>
-<h4 align="center">我是Ayyyyano，一个平平无奇的高中生。</h4>
-<h4 align="center">主成分: 东方/音MAD/术力口 (?)</h4>
+<h2 align="center">关于 / 联系我</h2>
+<h4 align="center">这里是 Ayano 的小站。</h4>
+<h4 align="center">谢谢你在人群中找到我。</h4>
 
-### 🔭 目前正在维护的 
-> 已沉迷啤酒烧烤，后续大概率不会积极维护，随时存在删档风险。
-- [Bilibili 动态自动点赞（非原创）](https://ayyyyano.github.io/post/b-zhan-xiang-guan-you-hou-cha-jian-%20%28-han-dian-zan-%29.html)
-- [部分冷门机型的 GSI Bug 修复](https://www.bilibili.com/opus/1085858188768575528)
-- 没有了
+## 🔭 项目
+见我的 Github: [主页](https://github.com/ayyyyano)
+或者前往我的 Bilibili: [主账号](https://space.bilibili.com/9943137) [副账号](https://space.bilibili.com/501335897)
 
-### ❌ 因各种原因停止的 
-> 只是想被曾经的朋友记住。
-- [Handsome 博客主题的去授权二改](https://wwbop.lanzouw.com/iiQgn0hnqw2b)
-- [OneManager 登录页面美化](https://flyme.cf/archives/37.html)
-- ......
+## 📫 联系我
+### 邮箱
+<a href="mailto:ayyyyano@outlook.com">发邮件</a>
+不出意外的话，我会在48小时内回复你的邮件 (骚扰、垃圾内容除外)。
+若未能收到回复，请尝试更换邮箱 (尽量不使用国内邮箱)。
 
-### 📫 你可以在这些地方找到我 
-<p align="left">
-<a href="https://space.bilibili.com/501335897" target="blank"><img align="center" src="https://ayyyyano.github.io/bilibili.svg" alt="" height="30" width="30" /></a>
-<a href="https://www.coolapk.com/u/2529353" target="blank"><img align="center" src="https://ayyyyano.github.io/coolapk.svg" alt="" height="30" width="30" /></a>
-</p>
+### Telegram
+`@ayano_8964` [→](https://t.me/ayano_8964)
+不出意外的话，我会在48小时内回复你的消息。
+
+### 其它平台
+#### 酷安
+有私信会随缘回复。[个人页面](https://www.coolapk.com/u/2529353)
+#### Bilibili
+有私信会随缘回复。建议联系上面主号。
+#### X (Twitter)
+`@Ayyyyano` [→](https://x.com/ayyyyano)
+不常看，并且我可能会失联。
+
+出于隐私原因，不再公开敏感联系方式。如有需要，请发邮件并说明来意。
