@@ -2,7 +2,7 @@
 #### 前言
 没有意外的话，本文将同时在[智教联盟](https://forum.smart-teach.cn/t/ica)、GitHub 与 Bilibili 上同时发布。似乎半年没写过新文章了，那就来一个大伙都能看懂的。我想肯定有很多人认为这篇文章的做法没有实际用处，而且自己也不知道有没有前人发布过类似的内容，但本文的东西大部分是我一步步摸索出来的，没指望能收获什么浏览量，就当是我的一次测试记录吧。
 
-4.19 追加: 不建议参考。建议转用其它批注软件: 如ICC-CE、智绘教Inkeys等。不需要复杂配置。
+4.19 追加: 不建议参考这篇文章内的操作。建议转用其它批注软件: 如ICC-CE、智绘教Inkeys等。不需要太复杂的配置。本文仅适用于想要替换希沃桌面侧栏批注功能的用户。
 
 **测试环境**: SEEWO BG86EG (MT51C) 、Windows 10 1703 (10.0.15063) 
 **所需软件**: Microsoft Office 2024、SEEWO FAMILY BUCKET 8.1.0.30、Ink Canvas Artistry 4.9.4
@@ -47,7 +47,7 @@
 3. 添加完成后双击刚才创建的任务进入配置页面，勾选使用最高权限运行。
 重启系统后不出意外就是用最高权限运行 ICA 了。使用桌面助手或侧边栏打开同理。那么，我们只需要解决 PowerPoint 出现的问题就可以了。
 
-这里我们就不对 ICA 下手了，让 PowerPoint 也使用管理员权限运行就可以解决Office COM相关的问题。这里我们需要修改注册表以实现 COM 接口的成功识别。操作如下。
+这里我们就不对 ICA 下手了，让 PowerPoint 也使用管理员权限运行就可以解决Office COM相关的问题。找到对应程序右键属性 -> 兼容性 -> 更改所有用户的设置 -> 勾选以管理员身份运行后重启。如果无效，我们需要修改注册表以确保 COM 接口的成功识别。操作如下。
 <img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/13deecd0-658e-4d18-9c06-cb47d4fbe9b8" />
 <img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/1e767939-a826-4196-9995-30656b98b26b" />
 <img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/304ee0d4-a535-428d-a92b-f8901499a6ce" />
