@@ -2,6 +2,8 @@
 #### 前言
 没有意外的话，本文将同时在[智教联盟](https://forum.smart-teach.cn/t/ica)、GitHub 与 Bilibili 上同时发布。似乎半年没写过新文章了，那就来一个大伙都能看懂的。我想肯定有很多人认为这篇文章的做法没有实际用处，而且自己也不知道有没有前人发布过类似的内容，但本文的东西大部分是我一步步摸索出来的，没指望能收获什么浏览量，就当是我的一次测试记录吧。
 
+4.19 追加: 不建议参考。建议转用其它批注软件: 如ICC-CE、智绘教Inkeys等。不需要复杂配置。
+
 **测试环境**: SEEWO BG86EG (MT51C) 、Windows 10 1703 (10.0.15063) 
 **所需软件**: Microsoft Office 2024、SEEWO FAMILY BUCKET 8.1.0.30、Ink Canvas Artistry 4.9.4
 
