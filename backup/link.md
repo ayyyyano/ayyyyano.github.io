@@ -1,16 +1,13 @@
 <h2 align="center">导航 / 友链</h2>
 <h4 align="center">更新日期: 2026.4.9 | 谢谢你在人群中找到我</h4>
 
+### 友情链接
+**重要: 友链列表已迁移至 [Nekro‘s Blog](https://blog.nekro.top/links/)
+请点击上面链接进行跳转，本站内容应该也会同步迁移。此处友链不再更新。**
+
 ### 本站导航
 [联系我](https://ayyyyano.github.io/about.html)
 [扩列条](https://link.me/ayyyyano)
-
-### 友情链接
-> 暂无。若需申请请前往关于页面发送邮件。
-
-> DEMO (随时更换 / 删除)
-#### AbyssHKe7監視的博客
-`ボイパ対決` [→](https://badapple.abyssh.dpdns.org/)
 
 ### 申请条件
 > 同好优先。本站保留最终决定权。

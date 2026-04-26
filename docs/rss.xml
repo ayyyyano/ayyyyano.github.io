@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Ayano</title><link>https://ayyyyano.github.io</link><description>「幸せ」ってなんだか不思議，明日のこと、好きになれる。</description><copyright>Ayano</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/90670998?v=4</url><title>avatar</title><link>https://ayyyyano.github.io</link></image><lastBuildDate>Wed, 08 Apr 2026 17:28:52 +0000</lastBuildDate><managingEditor>Ayano</managingEditor><ttl>60</ttl><webMaster>Ayano</webMaster><item><title>在 Gmeek 博客页脚添加超链接的方法</title><link>https://ayyyyano.github.io/post/zai-%20Gmeek%20-bo-ke-ye-jiao-tian-jia-chao-lian-jie-de-fang-fa.html</link><description># Gmeek 页脚添加超链接
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Ayano</title><link>https://ayyyyano.github.io</link><description>「幸せ」ってなんだか不思議，明日のこと、好きになれる。</description><copyright>Ayano</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/90670998?v=4</url><title>avatar</title><link>https://ayyyyano.github.io</link></image><lastBuildDate>Sun, 26 Apr 2026 11:11:16 +0000</lastBuildDate><managingEditor>Ayano</managingEditor><ttl>60</ttl><webMaster>Ayano</webMaster><item><title>在 Gmeek 博客页脚添加超链接的方法</title><link>https://ayyyyano.github.io/post/zai-%20Gmeek%20-bo-ke-ye-jiao-tian-jia-chao-lian-jie-de-fang-fa.html</link><description># Gmeek 页脚添加超链接
 ### 前言
 本文部分内容使用 AI 进行辅助创作。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/zai-%20Gmeek%20-bo-ke-ye-jiao-tian-jia-chao-lian-jie-de-fang-fa.html</guid><pubDate>Wed, 08 Apr 2026 17:28:18 +0000</pubDate></item><item><title>Cloudflare 优选节点 | 利用 Edgetunnel</title><link>https://ayyyyano.github.io/post/Cloudflare%20-you-xuan-jie-dian-%20-%20-li-yong-%20Edgetunnel.html</link><description># 可能是目前成本最低的科学上网方案
 ### 前言
@@ -38,12 +38,9 @@
 用这种方式建博客相当简单且省成本，个人2分钟内便完成了搭建。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/Github%20Pages%2BGmeek%20-jian-zhan.html</guid><pubDate>Fri, 09 Aug 2024 16:24:28 +0000</pubDate></item><item><title>link</title><link>https://ayyyyano.github.io/link.html</link><description>&lt;h2 align='center'&gt;导航 / 友链&lt;/h2&gt;
 &lt;h4 align='center'&gt;更新日期: 2026.4.9 | 谢谢你在人群中找到我&lt;/h4&gt;
 
-### 本站导航
-[联系我](https://ayyyyano.github.io/about.html)
-[扩列条](https://link.me/ayyyyano)
-
 ### 友情链接
-&gt; 暂无。</description><guid isPermaLink="true">https://ayyyyano.github.io/link.html</guid><pubDate>Sat, 24 Aug 2024 17:52:12 +0000</pubDate></item><item><title>about</title><link>https://ayyyyano.github.io/about.html</link><description>&lt;h2 align='center'&gt;关于 / 联系&lt;/h2&gt;
+**重要: 友链列表已迁移至 [Nekro‘s Blog](https://blog.nekro.top/links/)
+请点击上面链接进行跳转，本站内容应该也会同步迁移。</description><guid isPermaLink="true">https://ayyyyano.github.io/link.html</guid><pubDate>Sat, 24 Aug 2024 17:52:12 +0000</pubDate></item><item><title>about</title><link>https://ayyyyano.github.io/about.html</link><description>&lt;h2 align='center'&gt;关于 / 联系&lt;/h2&gt;
 &lt;h4 align='center'&gt;这里是 Ayano 的小站 | 谢谢你在人群中找到我&lt;/h4&gt;
 
 ## 🔭 项目
