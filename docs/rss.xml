@@ -1,2 +1,55 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Ayano</title><link>https://ayyyyano.github.io</link><description>「幸せ」ってなんだか不思議，明日のこと、好きになれる。</description><copyright>Ayano</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/90670998?v=4</url><title>avatar</title><link>https://ayyyyano.github.io</link></image><lastBuildDate>Mon, 27 Apr 2026 17:20:00 +0000</lastBuildDate><managingEditor>Ayano</managingEditor><ttl>60</ttl><webMaster>Ayano</webMaster></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Ayano</title><link>https://ayyyyano.github.io</link><description>「幸せ」ってなんだか不思議，明日のこと、好きになれる。</description><copyright>Ayano</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/90670998?v=4</url><title>avatar</title><link>https://ayyyyano.github.io</link></image><lastBuildDate>Tue, 28 Apr 2026 13:30:16 +0000</lastBuildDate><managingEditor>Ayano</managingEditor><ttl>60</ttl><webMaster>Ayano</webMaster><item><title>网站迁移公告</title><link>https://ayyyyano.github.io/post/wang-zhan-qian-yi-gong-gao.html</link><description># 迁移通知
+### 说明
+鉴于 Gmeek 的功能更新缓慢，且网站样式单一，自定义程度低。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/wang-zhan-qian-yi-gong-gao.html</guid><pubDate>Sun, 26 Apr 2026 11:18:21 +0000</pubDate></item><item><title>在 Gmeek 博客页脚添加超链接的方法</title><link>https://ayyyyano.github.io/post/zai-%20Gmeek%20-bo-ke-ye-jiao-tian-jia-chao-lian-jie-de-fang-fa.html</link><description># Gmeek 页脚添加超链接
+### 前言
+本文部分内容使用 AI 进行辅助创作。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/zai-%20Gmeek%20-bo-ke-ye-jiao-tian-jia-chao-lian-jie-de-fang-fa.html</guid><pubDate>Wed, 08 Apr 2026 17:28:18 +0000</pubDate></item><item><title>Cloudflare 优选节点 | 利用 Edgetunnel</title><link>https://ayyyyano.github.io/post/Cloudflare%20-you-xuan-jie-dian-%20-%20-li-yong-%20Edgetunnel.html</link><description># 可能是目前成本最低的科学上网方案
+### 前言
+最近似乎不少机场都炸了，查了一下似乎是国内各大机房在打击转发业务的原因，不是排查翻墙就是屏蔽海外，拥有一个备用的科学上网手段的重要性就上来了。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/Cloudflare%20-you-xuan-jie-dian-%20-%20-li-yong-%20Edgetunnel.html</guid><pubDate>Mon, 06 Apr 2026 17:46:22 +0000</pubDate></item><item><title>[就看看桑] 成功复活 (伪) ! B 站第一个销号 UP 的离线主页 的 在线版本</title><link>https://ayyyyano.github.io/post/%5B-jiu-kan-kan-sang-%5D%20-cheng-gong-fu-huo-%20%28-wei-%29%20%21%20B%20-zhan-di-yi-ge-xiao-hao-%20UP%20-de-li-xian-zhu-ye-%20-de-%20-zai-xian-ban-ben.html</link><description># 就看看桑 主页
+### 无目录
+[传送门](https://ayyyyano.github.io/就看看桑.html)
+
+--------
+
+文件来自 Bilibili @bili_84074 ，非常感谢。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/%5B-jiu-kan-kan-sang-%5D%20-cheng-gong-fu-huo-%20%28-wei-%29%20%21%20B%20-zhan-di-yi-ge-xiao-hao-%20UP%20-de-li-xian-zhu-ye-%20-de-%20-zai-xian-ban-ben.html</guid><pubDate>Sun, 15 Mar 2026 17:57:35 +0000</pubDate></item><item><title>OPPO A9 (MT6771T) 刷入 PixelExperience 13 的过程记录</title><link>https://ayyyyano.github.io/post/OPPO%20A9%20%28MT6771T%29%20-shua-ru-%20PixelExperience%2013%20-de-guo-cheng-ji-lu.html</link><description># OPPO A9 刷入 PixelExperience 13 GSI
+### 前言
+1. (26.3.12 / Bilibili 发布时间: 25.4.20) 本文已归档。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/OPPO%20A9%20%28MT6771T%29%20-shua-ru-%20PixelExperience%2013%20-de-guo-cheng-ji-lu.html</guid><pubDate>Thu, 12 Mar 2026 14:53:32 +0000</pubDate></item><item><title>OPPO Find X (PAHM00) 刷入 Flyme 9 的大致过程与问题修复</title><link>https://ayyyyano.github.io/post/OPPO%20Find%20X%20%28PAHM00%29%20-shua-ru-%20Flyme%209%20-de-da-zhi-guo-cheng-yu-wen-ti-xiu-fu.html</link><description># OPPO Find X Flyme 9 GSI
+### 时间线
+25.7.5: Bilibili 原文发布。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/OPPO%20Find%20X%20%28PAHM00%29%20-shua-ru-%20Flyme%209%20-de-da-zhi-guo-cheng-yu-wen-ti-xiu-fu.html</guid><pubDate>Thu, 12 Mar 2026 14:14:28 +0000</pubDate></item><item><title>适用于部分创维电视 (酷开系统 9.0) 的替换默认桌面方案</title><link>https://ayyyyano.github.io/post/shi-yong-yu-bu-fen-chuang-wei-dian-shi-%20%28-ku-kai-xi-tong-%209.0%29%20-de-ti-huan-mo-ren-zhuo-mian-fang-an.html</link><description># 酷开系统 9.0 替换默认桌面
+### 前言
+此方案仅在创维 **65G22** (系统版本 9.0.30208-302080 / Android 10 ) 上测试通过，仅供参考，不保证其它电视的可用性。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/shi-yong-yu-bu-fen-chuang-wei-dian-shi-%20%28-ku-kai-xi-tong-%209.0%29%20-de-ti-huan-mo-ren-zhuo-mian-fang-an.html</guid><pubDate>Sun, 22 Feb 2026 17:06:00 +0000</pubDate></item><item><title>斐讯N1使用iStoreOS实现旁路由功能</title><link>https://ayyyyano.github.io/post/fei-xun-N1-shi-yong-iStoreOS-shi-xian-pang-lu-you-gong-neng.html</link><description># 斐讯 N1 使用 iStoreOS 实现旁路由功能
+### 前言
+前段时间，我在 Bilibili 上发布了有关 N1 刷入第三方固件并实现 U 盘启动的视频。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/fei-xun-N1-shi-yong-iStoreOS-shi-xian-pang-lu-you-gong-neng.html</guid><pubDate>Wed, 11 Feb 2026 12:57:52 +0000</pubDate></item><item><title>一个自制的小米盒子3增强版 (MDZ-18-AA) 官改固件</title><link>https://ayyyyano.github.io/post/yi-ge-zi-zhi-de-xiao-mi-he-zi-3-zeng-qiang-ban-%20%28MDZ-18-AA%29%20-guan-gai-gu-jian.html</link><description># 小米盒子 3 增强版官改固件
+### 前言
+**因文章浏览量未达预期，此前文章已转为私有并且不再继续更新，以下内容仅供个人备份。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/yi-ge-zi-zhi-de-xiao-mi-he-zi-3-zeng-qiang-ban-%20%28MDZ-18-AA%29%20-guan-gai-gu-jian.html</guid><pubDate>Tue, 03 Feb 2026 17:46:27 +0000</pubDate></item><item><title>斐讯N1刷入Android TV并通过U盘启动OpenWRT</title><link>https://ayyyyano.github.io/post/fei-xun-N1-shua-ru-Android%20TV-bing-tong-guo-U-pan-qi-dong-OpenWRT.html</link><description># 斐讯 N1 刷入 Android TV 并通过 U 盘启动 OpenWRT
+#### 前言
+本文非教程向文章，不会提供具体步骤指导。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/fei-xun-N1-shua-ru-Android%20TV-bing-tong-guo-U-pan-qi-dong-OpenWRT.html</guid><pubDate>Mon, 02 Feb 2026 13:44:28 +0000</pubDate></item><item><title>OPPO Find X (PAHM00) 刷入 Miku UI 13 的简单体验与问题修复</title><link>https://ayyyyano.github.io/post/OPPO%20Find%20X%20%28PAHM00%29%20-shua-ru-%20Miku%20UI%2013%20-de-jian-dan-ti-yan-yu-wen-ti-xiu-fu.html</link><description># OPPO Find X Miku UI
+### 前言
+在今年元旦，我放弃了对 PAHM00 Flyme 9 的继续支持。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/OPPO%20Find%20X%20%28PAHM00%29%20-shua-ru-%20Miku%20UI%2013%20-de-jian-dan-ti-yan-yu-wen-ti-xiu-fu.html</guid><pubDate>Sun, 18 Jan 2026 02:34:34 +0000</pubDate></item><item><title>使用 Ink Canvas Artistry 替换希沃桌面的批注功能</title><link>https://ayyyyano.github.io/post/shi-yong-%20Ink%20Canvas%20Artistry%20-ti-huan-xi-wo-zhuo-mian-de-pi-zhu-gong-neng.html</link><description># 增强希沃桌面批注体验 解决希沃桌面批注打开慢、效率低的问题
+#### 前言
+没有意外的话，本文将同时在[智教联盟](https://forum.smart-teach.cn/t/ica)、GitHub 与 Bilibili 上同时发布。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/shi-yong-%20Ink%20Canvas%20Artistry%20-ti-huan-xi-wo-zhuo-mian-de-pi-zhu-gong-neng.html</guid><pubDate>Sat, 17 Jan 2026 12:44:57 +0000</pubDate></item><item><title>一份我的 Bilibili 共号 / 小团体邀请</title><link>https://ayyyyano.github.io/post/yi-fen-wo-de-%20Bilibili%20-gong-hao-%20-%20-xiao-tuan-ti-yao-qing.html</link><description>## 你好，朋友。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/yi-fen-wo-de-%20Bilibili%20-gong-hao-%20-%20-xiao-tuan-ti-yao-qing.html</guid><pubDate>Fri, 16 Aug 2024 14:44:01 +0000</pubDate></item><item><title>Bilibili 相关油猴插件 (含点赞脚本)</title><link>https://ayyyyano.github.io/post/Bilibili%20-xiang-guan-you-hou-cha-jian-%20%28-han-dian-zan-jiao-ben-%29.html</link><description># [存档] 目前使用的 Bilibili 相关油猴插件
+#### 链接，需要自取，教程略
+[推荐安装 Bilibili Evolved](https://github.com/the1812/Bilibili-Evolved)
+[动态自动点赞 若无法使用先装上面的插件](https://greasyfork.org/zh-CN/scripts/458535-bilibili-%E5%8A%A8%E6%80%81%E8%87%AA%E5%8A%A8%E7%82%B9%E8%B5%9E)。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/Bilibili%20-xiang-guan-you-hou-cha-jian-%20%28-han-dian-zan-jiao-ben-%29.html</guid><pubDate>Sat, 10 Aug 2024 04:04:37 +0000</pubDate></item><item><title>Github Pages+Gmeek 建站</title><link>https://ayyyyano.github.io/post/Github%20Pages%2BGmeek%20-jian-zhan.html</link><description># [存档] 使用Github Pages+Gmeek快速搭建个人博客&#13;
+#### 相关链接 (含方法和需要用到的工具)&#13;
+[少数派帖子](https://sspai.com/post/88950)&#13;
+[快速上手](https://blog.meekdai.com/post/Gmeek-kuai-su-shang-shou.html)&#13;
+[进阶教程](https://blog.meekdai.com/tag.html#Gmeek)&#13;
+&#13;
+#### 杂谈&#13;
+用这种方式建博客相当简单且省成本，个人2分钟内便完成了搭建。</description><guid isPermaLink="true">https://ayyyyano.github.io/post/Github%20Pages%2BGmeek%20-jian-zhan.html</guid><pubDate>Fri, 09 Aug 2024 16:24:28 +0000</pubDate></item><item><title>link</title><link>https://ayyyyano.github.io/link.html</link><description>&lt;h2 align='center'&gt;导航 / 友链&lt;/h2&gt;
+&lt;h4 align='center'&gt;更新日期: 2026.4.9 | 谢谢你在人群中找到我&lt;/h4&gt;
+
+### 友情链接
+**重要: 友链列表已迁移至 [Nekro‘s Blog](https://blog.nekro.top/links/)
+请点击上面链接进行跳转，本站内容应该也会同步迁移。</description><guid isPermaLink="true">https://ayyyyano.github.io/link.html</guid><pubDate>Sat, 24 Aug 2024 17:52:12 +0000</pubDate></item><item><title>about</title><link>https://ayyyyano.github.io/about.html</link><description>&lt;h2 align='center'&gt;关于 / 联系&lt;/h2&gt;
+&lt;h4 align='center'&gt;这里是 Ayano 的小站 | 谢谢你在人群中找到我&lt;/h4&gt;
+
+## 🔭 项目
+见我的 Github: [主页](https://github.com/ayyyyano)
+或者前往我的 Bilibili: [主账号](https://space.bilibili.com/9943137) [副账号](https://space.bilibili.com/501335897)
+
+## 📫 联系我
+### 邮箱
+&lt;a href='mailto:ayyyyano@outlook.com'&gt;发邮件&lt;/a&gt;
+不出意外的话，我会在48小时内回复你的邮件 (骚扰、垃圾内容除外)。</description><guid isPermaLink="true">https://ayyyyano.github.io/about.html</guid><pubDate>Sat, 24 Aug 2024 18:01:11 +0000</pubDate></item></channel></rss>

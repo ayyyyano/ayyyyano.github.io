@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script><script>document.addEventListener('DOMContentLoaded', function() { var interval = setInterval(function() { var footer = document.getElementById('footer2'); if (footer) { if (!document.getElementById('customLink')) { var link = document.createElement('a'); link.id = 'customLink'; link.href = 'https://icp.gov.moe/?keyword=20262514'; link.innerHTML = '萌ICP备20262514号'; link.style.marginLeft = '0px'; link.target = '_blank'; footer.appendChild(document.createTextNode(' • ')); footer.appendChild(link); } clearInterval(interval); } }, 100); });</script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/90670998?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="# OPPO Find X Flyme 9 GSI
+### 时间线
+25.7.5: Bilibili 原文发布。">
+<meta property="og:title" content="OPPO Find X (PAHM00) 刷入 Flyme 9 的大致过程与问题修复">
+<meta property="og:description" content="# OPPO Find X Flyme 9 GSI
+### 时间线
+25.7.5: Bilibili 原文发布。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ayyyyano.github.io/post/OPPO%20Find%20X%20%28PAHM00%29%20-shua-ru-%20Flyme%209%20-de-da-zhi-guo-cheng-yu-wen-ti-xiu-fu.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/90670998?v=4">
+<title>OPPO Find X (PAHM00) 刷入 Flyme 9 的大致过程与问题修复</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">OPPO Find X (PAHM00) 刷入 Flyme 9 的大致过程与问题修复</h1>
+<div class="title-right">
+    <a href="https://ayyyyano.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/ayyyyano/ayyyyano.github.io/issues/20" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>OPPO Find X Flyme 9 GSI</h1>
+<h3>时间线</h3>
+<p>25.7.5: Bilibili 原文发布。<br>
+26.1.1: 归档。不再更新。<br>
+26.3.12: 文章转移到 Github 。未进行其它改动。<br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/6f48b540-08fa-41b7-a331-f16228ee9655"><img width="1026" height="686" alt="Image" src="https://github.com/user-attachments/assets/6f48b540-08fa-41b7-a331-f16228ee9655" style="max-width: 100%; height: auto; max-height: 686px;; aspect-ratio: 1026 / 686; background-color: var(--bgColor-muted); border-radius: 6px; display: block" class="js-gh-image-fallback"></a></p>
+<h3>前言</h3>
+<p>步骤很简单，解锁BL后在ColorOS 7(A10)原包下直接通过fastboot刷入system，之后格data补v5宽容和vbmeta即可。写文章是方便让不大了解机型情况的人刷入，且不会出现解密失败或开机系统破坏警告。<br>
+理论上本方案适用于在Find X 高配版 (PAHM00)上刷入任何一个处在A10底层的GSI，也可用于Find X 标准版 (PAFM00)。但其余GSI的Bug难以得知，有条件请自行测试。<br>
+特别感谢: 酷安@林子汐c @同执Tonzy @某贼 @爱多功能手机<br>
+三编: 补充了一些之前没有发现的Bug。有蓝牙外放需求请谨慎刷入。我无法复现蓝牙问题，故无法提供修复方案。网盘内已上传修复模块，可通过刷入Magisk模块的方式解决遇到的部分问题 (屏幕亮度 手电筒 设备信息等)。Find X的MIUI 11篇我已自行删除，有需要可以私信获取相关文件。</p>
+<h3>包相关</h3>
+<h4>下载</h4>
+<p>GSI Vbmeta修复 V5宽容 以及自制的Bug修复模块等: <a href="https://www.123pan.com/s/kCTTjv-HU58H.html" rel="nofollow">下载</a></p>
+<h4>已知问题 (未修复)</h4>
+<p>蓝牙 (半残废 互传可用 据他人反馈无法连接耳机等外放)<br>
+息屏显示 (可开启 但时间不更新)<br>
+热点 (无法开启)<br>
+人脸解锁 (可添加 但无法正常识别)<br>
+自带相机 (闪退 可手动安装Open Camera)<br>
+摄像头升降 (可手动或通过Jay's Home控制)<br>
+锁屏手电筒和相机点击 (关闭密码使用滑动解锁可恢复正常)</p>
+<h3>注意事项</h3>
+<ol>
+<li>刷机有风险，请做好不开机的准备，个人操作导致的问题本人不负责。</li>
+<li>建议在Android Q (ColorOS 7.1) 下刷入，不建议在ColorOS 11上降级进行操作，可能引发未知问题。</li>
+<li>除修复必须选项外，不要轻易动vendor分区，出问题后果自负。</li>
+<li>不建议刷入Uperf调度，可能导致功耗异常升高。</li>
+</ol>
+<h3>展示</h3>
+<p>WiFi/数据/蓝牙均正常 可正常获取面具权限<br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/dbad7afb-40ed-4967-b597-bf47d3021b6e"><img src="https://github.com/user-attachments/assets/dbad7afb-40ed-4967-b597-bf47d3021b6e" alt="Image" style="max-width: 100%;"></a></p>
+<h3>大致过程</h3>
+<h4>解锁BL</h4>
+<p>略。根据安卓版本选择深度测试App，在App内申请后等待一个月通过即可。链接内提供了安装包。</p>
+<h4>刷入底包 (ColorOS 7.1可跳过)</h4>
+<ol>
+<li>
+<p>刷入TWRP<br>
+重启至Fastboot，使用秋之盒等工具箱/ADB命令刷入提供的对应安卓版本TWRP文件。若一次未能成功刷入，则尝试两次，或检查TWRP是否与安卓版本对应。</p>
+</li>
+<li>
+<p>刷入底包<br>
+使用TWRP刷入提供的C7底包，并在TWRP中清除Cache与Dalvik/ART Cache，并格式化Data分区。若无法格式化，则在清除内的修复或更改文件系统选项中将Data分区格式为EXFAT或其它格式。</p>
+</li>
+</ol>
+<h4>刷入Flyme</h4>
+<ol>
+<li>
+<p>刷入system<br>
+重启至Fastboot模式，使用秋之盒等工具箱启用ADB命令行，输入fastboot flash system xxx.img (xxx为提供的7z文件中解压出的system.img)</p>
+</li>
+<li>
+<p>清除数据<br>
+待system刷入完成后，在Fastboot模式下刷入官方Recovery，随后重启至Rec，选择繁体中文。之后格式化数据分区，成功并点击确定后会自动重启。</p>
+</li>
+<li>
+<p>补vbmeta与刷入v5宽容<br>
+在重启过程中手动进入Fastboot模式，刷入TWRP后重启至TWRP，格式化Data分区后，刷入提供的Permissiver_v5.zip与Vbmeta_Patch.zip后重启进入系统。</p>
+</li>
+<li>
+<p>系统软件安装<br>
+7z压缩包有提供缺失的系统应用，选择需要的应用手动安装或用MT管理器之类的应用移动至对应文件夹设置权限为755即可。相机建议用上传的安装包。压缩包内的可能会闪退。</p>
+</li>
+</ol>
+<h4>Bug修复</h4>
+<p>目前已上传修复模块，刷入便可以解决下面列出的问题。也可以通过手动更改特定文件的方式修复。<br>
+部分方案来自网络 (已知来源的会标注)，经个人测试能够起作用，如有侵权请联系我删除。</p>
+<ol>
+<li>
+<p>刷入面具<br>
+在MT管理器或TWRP复制dev/block/by-name下的boot文件到本地。<br>
+使用面具修补 (我使用的是Kitsune Mask 不勾选保持强制加密与刷入到Recovery)。<br>
+将修补的boot用工具箱/命令刷入即可。<br>
+若出现卡二屏/炸WiFi等不明问题就把刚才提取的Boot刷回去，然后尝试更换面具版本。</p>
+</li>
+<li>
+<p>机型信息修改 (非必需)<br>
+(1) 修改build.prop的ro.product.model ro.product.brand等项。或使用爱玩机等工具进行修改。<br>
+(2) 修改手机电池数据 (修改自酷安 @啊啊啊啊啊啊旋)<br>
+a. 用MT管理器打开位于/system/framework/目录的framework-res.apk<br>
+b. 打开apk后，在里面搜索"Power"，选择"Power_profile"<br>
+c. 进入后搜索现在系统显示的电池数据，改成所需要的数值。例如Find X高配版的的3400，保存退出。替换后重启生效。<br>
+(3) 修改提示信息 (如: 电池容量，系统版本等提示语)<br>
+打开文件Settings.apk (即设置) ，一般路径在system/product/priv-app/Settings/Settings.apk，用MT管理器点击这个APP → 查看 → resources.arsc → Arsc编辑器 → 搜索资源值 → 搜索你想改的关键字即可找到进行更改 → 退出并保存 (不选择自动签名) → 重启<br>
+(4) 修改设置内其他配置参数信息<br>
+在SettingsProvider.apk (即设置存储apk) 里改，路径/system/priv-app/SettingsProvider/SettingsProvider.apk</p>
+</li>
+<li>
+<p>屏幕最大亮度修改<br>
+用MT管理器打开位于/system/framework/目录的framework-res.apk，点击resources.arsc，选择Arsc编辑器，进入 android/integer/integer ，把config_screenBrightnessSettingMaximum (最大亮度) 的数值改成255 (本来是1000左右)；把config_screenBrightnessSettingDefault的数值改成100；config_screenBrightnessSettingMinimum (最小亮度) 无需改动。修改后退出并保存 (不选择自动签名)，修改后重启即可。</p>
+</li>
+<li>
+<p>数据网络/通知中心手电筒修复<br>
+见所给文件。或直接在酷安/Bilibili上搜索他人总结的GSI通用修复教程，基本上可以解决。</p>
+</li>
+</ol></div>
+<div style="font-size:small;margin-top:8px;float:right;">转载文章请注明出处 ;-)</div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://ayyyyano.github.io">Ayano</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("08/09/2024"!=""){
+    var startSite=new Date("08/09/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","ayyyyano/ayyyyano.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
+
+</html>
