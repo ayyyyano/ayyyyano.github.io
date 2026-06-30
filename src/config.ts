@@ -369,27 +369,27 @@ export const profileConfig: ProfileConfig = {
 	links: [
 		{
 			name: "GitHub",
-			icon: "fa7-brands:github",
+			icon: "line-md:github",
 			url: "https://github.com/ayyyyano",
 		},
 		{
 			name: "Twitter",
-			icon: "fa7-brands:x-twitter",
+			icon: "line-md:twitter",
 			url: "https://x.com/pavlova233",
 		},
 		{
 			name: "Telegram",
-			icon: "fa7-brands:telegram",
+			icon: "line-md:telegram",
 			url: "https://github.com/ayyyyano",
 		},
 		{
 			name: "Email",
-			icon: "fa7-solid:envelope",
+			icon: "line-md:email",
 			url: "mailto:i@nekro.top",
 		},
 		{
 			name: "RSS",
-			icon: "fa7-solid:rss",
+			icon: "line-md:rss",
 			url: "/rss/",
 		},
 	],
