@@ -333,10 +333,6 @@ Contributions are welcome! Feel free to submit issues and pull requests.
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
-### Original Project License
-
-This project is based on [Fuwari](https://github.com/saicaca/fuwari), which is licensed under the MIT License. The original copyright notice and permission notice are included in the LICENSE.MIT file in accordance with the MIT License requirements.
-
 ## 🙏 Acknowledgements
 
 - Based on the original [Fuwari](https://github.com/saicaca/fuwari) template
