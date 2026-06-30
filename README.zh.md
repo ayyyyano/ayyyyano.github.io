@@ -335,6 +335,10 @@ pnpm run sync-content
 
 本项目基于 Apache 许可证 2.0 - 查看 [LICENSE](LICENSE) 文件了解详情。
 
+### 原始项目许可证
+
+本项目基于 [Fuwari](https://github.com/saicaca/fuwari) 开发，该项目使用 MIT 许可证。根据 MIT 许可证要求，原始版权声明和许可声明已包含在 LICENSE.MIT 文件中。
+
 ## 🙏 致谢
 
 - 基于原始 [Fuwari](https://github.com/saicaca/fuwari) 模板

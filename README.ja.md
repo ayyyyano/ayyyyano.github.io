@@ -332,6 +332,10 @@ pnpm run sync-content
 
 このプロジェクトはApacheライセンス2.0の下でライセンスされています - 詳細は[LICENSE](./LICENSE)ファイルをご覧ください。
 
+### 元のプロジェクトライセンス
+
+このプロジェクトは[Fuwari](https://github.com/saicaca/fuwari)に基づいて開発され、元のプロジェクトはMITライセンスを使用しています。MITライセンスの要件に従い、元の著作権表示と許可通知はLICENSE.MITファイルに含まれています。
+
 ## 🙏 謝辞
 
 - オリジナルの[Fuwari](https://github.com/saicaca/fuwari)テンプレートをベースにしています
