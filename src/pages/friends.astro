@@ -6,7 +6,7 @@ import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getEntry, render } from "astro:content";
 
 import { siteConfig } from "../config";
-import { getShuffledFriendsList } from "../data/friends";
+import { getFriendsList } from "../data/friends";
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 
@@ -23,7 +23,7 @@ if (!friendsPost) {
 }
 
 const { Content } = await render(friendsPost);
-const friendsList = getShuffledFriendsList();
+const friendsList = getFriendsList();
 const allTags = Array.from(new Set(friendsList.flatMap((item) => item.tags)));
 ---
 
