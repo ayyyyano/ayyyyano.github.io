@@ -340,15 +340,15 @@ export const navBarConfig: NavBarConfig = {
 			],
 		},
 		{
-			name: "友链",
-			url: "/friends/",
-			icon: "material-symbols:group",
-		},
-		{
 			name: "其他",
 			url: "#",
 			icon: "material-symbols:more-horiz",
 			children: [
+				{
+			        name: "友链",
+		    	    url: "/friends/",
+		        	icon: "material-symbols:group",
+		        },
 				{
 					name: "留言",
 					url: "/anime/",
