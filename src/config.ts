@@ -87,7 +87,7 @@ export const siteConfig: SiteConfig = {
 	},
 
 	anime: {
-		mode: "local", // 番剧页面模式："bangumi" 使用Bangumi API，"local" 使用本地配置，"bilibili" 使用Bilibili API
+		mode: "bilibili", // 番剧页面模式："bangumi" 使用Bangumi API，"local" 使用本地配置，"bilibili" 使用Bilibili API
 	},
 
 	// 文章列表布局配置
@@ -273,13 +273,13 @@ export const navBarConfig: NavBarConfig = {
 					name: "Bilibili",
 					url: "https://space.bilibili.com/501335897",
 					external: true,
-					icon: "mingcute:bilibili-line",
+					icon: "mingcute:bilibili-fill",
 				},
                 {
 					name: "Bluesky",
 					url: "https://bsky.app/profile/nekro.top",
 					external: true,
-					icon: "line-md:bluesky",
+					icon: "line-md:bluesky-filled",
 				},
 				{
 					name: "Google 镜像",
@@ -291,13 +291,13 @@ export const navBarConfig: NavBarConfig = {
 					name: "GitHub 加速",
 					url: "https://gh.nekro.top/",
 					external: true,
-					icon: "line-md:github",
+					icon: "mingcute:github-fill",
 				},
 				{
 					name: "服务状态监测",
 					url: "https://status.nekro.top/",
 					external: true,
-					icon: "mingcute:server-line",
+					icon: "mingcute:server-fill",
 				},
 			],
 		},
@@ -317,11 +317,6 @@ export const navBarConfig: NavBarConfig = {
 					icon: "material-symbols:photo-library",
 				},
 				{
-					name: "关于",
-					url: "/about/",
-					icon: "material-symbols:person",
-				},
-				{
 					name: "项目",
 					url: "/projects/",
 					icon: "material-symbols:work",
@@ -336,6 +331,11 @@ export const navBarConfig: NavBarConfig = {
 					url: "/devices/",
 					icon: "material-symbols:devices",
 					external: false,
+				},
+				{
+					name: "更多",
+					url: "/about/",
+					icon: "material-symbols:info",
 				},
 			],
 		},
@@ -352,7 +352,7 @@ export const navBarConfig: NavBarConfig = {
 				{
 					name: "留言",
 					url: "/anime/",
-					icon: "material-symbols:upcoming-outline-rounded",
+					icon: "material-symbols:upcoming",
 				},
 				{
 					name: "时间线",
