@@ -64,7 +64,12 @@
 			const pixiKeys = Object.keys(PIXI).slice(0, 10).join(",");
 			if (!PIXI.live2d) { setStatus("error", `PIXI.live2d missing; PIXI keys=${pixiKeys}`); return; }
 			const live2dKeys = Object.keys(PIXI.live2d).join(",");
-			if (!PIXI.live2d.Live2DModel) { setStatus("error", `Live2DModel missing; live2d keys=${live2dKeys}`); return; }
+			if (!PIXI.live2d.Live2DModel) {
+				const w = window as any;
+				const err = w.__live2dError || PIXI.live2d.__loadError;
+				setStatus("error", `Live2DModel missing; live2d keys=${live2dKeys}; err=${err ? String(err.message || err) : "no error captured"}`);
+				return;
+			}
 			const Live2DModel = PIXI.live2d.Live2DModel;
 
 			app = new PIXI.Application({
