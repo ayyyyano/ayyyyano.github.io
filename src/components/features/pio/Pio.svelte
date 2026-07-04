@@ -74,8 +74,14 @@
 			if (!PIXI.utils) { setStatus("error", "PIXI.utils missing"); return; }
 			if (!PIXI.utils.Ticker && PIXI.Ticker) PIXI.utils.Ticker = PIXI.Ticker;
 			if (!PIXI.utils.EventEmitter && PIXI.EventEmitter) PIXI.utils.EventEmitter = PIXI.EventEmitter;
-			const utilsKeys = Object.keys(PIXI.utils).sort().join(",");
-			setStatus("loading", `Loading cubism4 via eval; utils has Ticker=${!!PIXI.utils.Ticker}`);
+			setStatus("loading", "Loading Cubism 4 Core...");
+			try {
+				await loadAndEval("/pio/static/live2dcubismcore.min.js");
+			} catch (e: any) {
+				setStatus("error", `cubism core eval failed: ${e?.message || e}`);
+				return;
+			}
+			setStatus("loading", "Loading pixi-live2d-display...");
 			try {
 				await loadAndEval("/pio/static/cubism4.min.js");
 			} catch (e: any) {
