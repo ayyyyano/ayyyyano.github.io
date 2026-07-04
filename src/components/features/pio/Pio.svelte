@@ -61,8 +61,10 @@
 			setStatus("loading", "Creating PIXI app...");
 			const PIXI = (window as any).PIXI;
 			if (!PIXI) { setStatus("error", "PIXI not on window"); return; }
-			if (!PIXI.live2d) { setStatus("error", "PIXI.live2d missing"); return; }
-			if (!PIXI.live2d.Live2DModel) { setStatus("error", "Live2DModel missing"); return; }
+			const pixiKeys = Object.keys(PIXI).slice(0, 10).join(",");
+			if (!PIXI.live2d) { setStatus("error", `PIXI.live2d missing; PIXI keys=${pixiKeys}`); return; }
+			const live2dKeys = Object.keys(PIXI.live2d).join(",");
+			if (!PIXI.live2d.Live2DModel) { setStatus("error", `Live2DModel missing; live2d keys=${live2dKeys}`); return; }
 			const Live2DModel = PIXI.live2d.Live2DModel;
 
 			app = new PIXI.Application({
