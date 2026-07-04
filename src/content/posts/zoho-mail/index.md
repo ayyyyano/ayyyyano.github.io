@@ -8,6 +8,7 @@ category: 存档备份
 licenseName: "CC BY-NC-SA 4.0"
 draft: false
 date: 2026-05-08
+image: "./cover.png"
 pubDate: 2026-05-08
 permalink: "zoho-mail"
 ---

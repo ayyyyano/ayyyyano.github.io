@@ -1,7 +1,7 @@
 ---
 title: 适用于部分创维电视 (酷开系统 9 0) 的替换默认桌面方案
 published: 2026-02-23
-pinned: false
+pinned: true
 description: 简洁至上，告别开机广告和信息流。
 tags: [Android, 推荐]
 category: 技术分享

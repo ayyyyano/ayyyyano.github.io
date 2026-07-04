@@ -1,7 +1,7 @@
 ---
 title: OPPO A9 (MT6771T) 刷入 PixelExperience 13 的过程记录
 published: 2025-04-20
-pinned: false
+pinned: true
 description: 告别老旧的 ColorOS 11 系统。
 tags: [Android, 刷机, 推荐]
 category: 技术分享

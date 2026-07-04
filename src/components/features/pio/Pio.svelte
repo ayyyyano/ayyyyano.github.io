@@ -126,10 +126,10 @@
 
 			setStatus("ready", `Model ready; scale=${scale.toFixed(3)}`);
 
-			model.on("hit", () => {
+			const triggerTouch = () => {
 				const defs = model?.internalModel?.motionManager?.definitions;
 				if (defs) {
-					const keys = Object.keys(defs).filter((k) => k.startsWith("w-"));
+					const keys = Object.keys(defs).filter((k) => k.startsWith("w-") || k.startsWith("face_"));
 					if (keys.length > 0) {
 						const group = randomItem(keys);
 						const idx = Math.floor(Math.random() * defs[group].length);
@@ -138,7 +138,10 @@
 				}
 				const touch = settings.dialog?.touch;
 				if (touch && touch.length > 0) showDialog(randomItem(touch));
-			});
+			};
+
+			model.on("hit", triggerTouch);
+			canvas.addEventListener("click", triggerTouch);
 
 			if (settings.dialog?.welcome) {
 				setTimeout(() => showDialog(settings.dialog.welcome), 800);
