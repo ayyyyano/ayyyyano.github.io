@@ -666,7 +666,7 @@ export const sakuraConfig: SakuraConfig = {
 // Pio 看板娘配置
 export const pioConfig: import("./types/config").PioConfig = {
 	enable: true, // 禁用看板娘以提升性能
-	models: ["/pio/models/airi/07airi_normal_3.0_f_t03.model3.json"], // 默认模型路径
+	models: ["/pio/models/airi/07airi_normal_3.0_f_t03.model3.json"], // 默认模型路径 (Cubism 4)
 	position: "left", // 模型位置
 	width: 280, // 默认宽度
 	height: 250, // 默认高度

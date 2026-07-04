@@ -58,6 +58,8 @@
 		"oddmisc": "^1.2.8",
 		"overlayscrollbars": "^2.16.0",
 		"pagefind": "^1.5.2",
+		"pixi-live2d-display": "^0.4.0",
+		"pixi.js": "^6.5.10",
 		"qrcode": "^1.5.4",
 		"reading-time": "^1.5.0",
 		"rehype-autolink-headings": "^7.1.0",
