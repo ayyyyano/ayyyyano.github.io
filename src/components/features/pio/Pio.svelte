@@ -52,24 +52,40 @@
 		});
 	}
 
+	async function loadAndEval(src: string): Promise<void> {
+		const resp = await fetch(src);
+		const code = await resp.text();
+		try {
+			const fn = new Function(code);
+			fn();
+		} catch (e: any) {
+			throw new Error(`Eval error in ${src}: ${e?.message || e}`);
+		}
+	}
+
 	async function initLive2D() {
 		if (!canvas) {
 			setStatus("error", "Canvas not bound");
 			return;
 		}
 		try {
-			setStatus("loading", "Creating PIXI app...");
 			const PIXI = (window as any).PIXI;
 			if (!PIXI) { setStatus("error", "PIXI not on window"); return; }
-			const pixiKeys = Object.keys(PIXI).slice(0, 10).join(",");
-			if (!PIXI.live2d) { setStatus("error", `PIXI.live2d missing; PIXI keys=${pixiKeys}`); return; }
+			if (!PIXI.utils) { setStatus("error", "PIXI.utils missing"); return; }
+			if (!PIXI.utils.Ticker && PIXI.Ticker) PIXI.utils.Ticker = PIXI.Ticker;
+			if (!PIXI.utils.EventEmitter && PIXI.EventEmitter) PIXI.utils.EventEmitter = PIXI.EventEmitter;
+			const utilsKeys = Object.keys(PIXI.utils).sort().join(",");
+			setStatus("loading", `Loading cubism4 via eval; utils has Ticker=${!!PIXI.utils.Ticker}`);
+			try {
+				await loadAndEval("/pio/static/cubism4.min.js");
+			} catch (e: any) {
+				setStatus("error", `cubism4 eval failed: ${e?.message || e}`);
+				return;
+			}
+			if (!PIXI.live2d) { setStatus("error", `PIXI.live2d missing after eval`); return; }
 			const live2dKeys = Object.keys(PIXI.live2d).join(",");
 			if (!PIXI.live2d.Live2DModel) {
-				const w = window as any;
-				const diag = w.__live2dDiag || PIXI.live2d.__live2dDiag || "no diag";
-				const scripts = document.querySelectorAll('script[src*="cubism4"]').length;
-				const pixiScripts = document.querySelectorAll('script[src*="pixi"]').length;
-				setStatus("error", `Live2DModel missing; diag=${diag}; cubism4Scripts=${scripts}; pixiScripts=${pixiScripts}; live2dKeys=${live2dKeys}`);
+				setStatus("error", `Live2DModel missing; live2dKeys=${live2dKeys}; utilsKeys=${utilsKeys.substring(0,200)}`);
 				return;
 			}
 			const Live2DModel = PIXI.live2d.Live2DModel;
@@ -149,14 +165,12 @@
 	onMount(() => {
 		if (!pioConfig.enable) return;
 		if (settings.hidden && window.matchMedia("(max-width: 1280px)").matches) return;
-		setStatus("loading", "Loading scripts...");
+		setStatus("loading", "Loading PIXI...");
 		(async () => {
 			try {
 				await loadScript("/pio/static/pixi.min.js");
-				setStatus("loading", "PIXI loaded; loading Live2D...");
-				await loadScript("/pio/static/cubism4.min.js");
-				setStatus("loading", "Live2D loaded; initializing...");
-				setTimeout(() => initLive2D(), 200);
+				setStatus("loading", "PIXI loaded; initializing Live2D...");
+				setTimeout(() => initLive2D(), 100);
 			} catch (e: any) {
 				setStatus("error", String(e?.message || e));
 			}
