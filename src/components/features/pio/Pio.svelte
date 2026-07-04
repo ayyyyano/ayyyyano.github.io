@@ -66,8 +66,8 @@
 			const live2dKeys = Object.keys(PIXI.live2d).join(",");
 			if (!PIXI.live2d.Live2DModel) {
 				const w = window as any;
-				const err = w.__live2dError || PIXI.live2d.__loadError;
-				setStatus("error", `Live2DModel missing; live2d keys=${live2dKeys}; err=${err ? String(err.message || err) : "no error captured"}`);
+				const diag = w.__live2dDiag || "no diag";
+				setStatus("error", `Live2DModel missing; ${diag}`);
 				return;
 			}
 			const Live2DModel = PIXI.live2d.Live2DModel;
