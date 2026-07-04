@@ -671,7 +671,7 @@ export const pioConfig: import("./types/config").PioConfig = {
 	width: 280, // 默认宽度
 	height: 250, // 默认高度
 	mode: "fixed", // 默认为可拖拽模式
-	hiddenOnMobile: false, // 默认在移动设备上隐藏
+	hiddenOnMobile: true, // 默认在移动设备上隐藏
 	dialog: {
 		welcome: "Welcome to Nekro's Blog!", // 欢迎词
 		touch: [
