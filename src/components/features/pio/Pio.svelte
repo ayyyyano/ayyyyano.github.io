@@ -119,14 +119,16 @@
 			const logicalH = settings.height;
 			const modelW = model.width / model.scale.x;
 			const modelH = model.height / model.scale.y;
-			const scale = Math.min(logicalW / modelW, logicalH / modelH) * 0.9;
+			model.anchor.set(0.5, 0.5);
+			const scale = Math.min(logicalW / modelW, logicalH / modelH) * 1.6;
 			model.scale.set(scale);
-			model.x = (logicalW - modelW * scale) / 2;
-			model.y = (logicalH - modelH * scale) / 2;
+			model.x = logicalW / 2;
+			model.y = logicalH / 2;
 
 			setStatus("ready", `Model ready; scale=${scale.toFixed(3)}`);
 
-			const triggerTouch = () => {
+			const triggerTouch = (e: Event) => {
+				e.stopPropagation();
 				const defs = model?.internalModel?.motionManager?.definitions;
 				if (defs) {
 					const keys = Object.keys(defs).filter((k) => k.startsWith("w-") || k.startsWith("face_"));
@@ -141,7 +143,7 @@
 			};
 
 			model.on("hit", triggerTouch);
-			canvas.addEventListener("click", triggerTouch);
+			container.addEventListener("click", triggerTouch);
 
 			if (settings.dialog?.welcome) {
 				setTimeout(() => showDialog(settings.dialog.welcome), 800);
