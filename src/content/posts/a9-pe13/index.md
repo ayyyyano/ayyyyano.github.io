@@ -8,6 +8,7 @@ category: 技术分享
 licenseName: "CC BY-NC-SA 4.0"
 draft: false
 date: 2025-04-20
+image: "./cover.jpg"
 pubDate: 2025-04-20
 permalink: "a9-pe13"
 ---

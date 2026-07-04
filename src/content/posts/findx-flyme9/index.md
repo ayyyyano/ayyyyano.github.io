@@ -8,6 +8,7 @@ category: 技术分享
 licenseName: "CC BY-NC-SA 4.0"
 draft: false
 date: 2025-07-05
+image: "./cover.png"
 pubDate: 2025-07-05
 permalink: "findx-flyme9"
 ---

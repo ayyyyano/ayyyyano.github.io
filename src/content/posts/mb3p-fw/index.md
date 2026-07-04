@@ -8,6 +8,7 @@ category: 技术分享
 licenseName: "CC BY-NC-SA 4.0"
 draft: false
 date: 2026-02-04
+image: "./cover.jpg"
 pubDate: 2026-02-04
 permalink: "mb3p-fw"
 ---

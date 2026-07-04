@@ -8,6 +8,7 @@ category: 技术分享
 licenseName: "CC BY-NC-SA 4.0"
 draft: false
 date: 2026-01-17
+image: "./cover.png"
 pubDate: 2026-01-17
 permalink: "ica"
 ---

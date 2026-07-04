@@ -307,6 +307,11 @@ export const navBarConfig: NavBarConfig = {
 			icon: "material-symbols:person",
 			children: [
 				{
+					name: "追番",
+					url: "/anime/",
+					icon: "material-symbols:movie",
+				},
+				{
 					name: "日记",
 					url: "/diary/",
 					icon: "material-symbols:book",
@@ -317,23 +322,13 @@ export const navBarConfig: NavBarConfig = {
 					icon: "material-symbols:photo-library",
 				},
 				{
-					name: "项目",
-					url: "/projects/",
-					icon: "material-symbols:work",
-				},
-				{
-					name: "技能",
-					url: "/skills/",
-					icon: "material-symbols:psychology",
-				},
-				{
 					name: "设备",
 					url: "/devices/",
 					icon: "material-symbols:devices",
 					external: false,
 				},
 				{
-					name: "更多",
+					name: "关于我",
 					url: "/about/",
 					icon: "material-symbols:info",
 				},
@@ -350,9 +345,14 @@ export const navBarConfig: NavBarConfig = {
 		        	icon: "material-symbols:group",
 		        },
 				{
-					name: "留言",
-					url: "/anime/",
-					icon: "material-symbols:upcoming",
+					name: "项目",
+					url: "/projects/",
+					icon: "material-symbols:work",
+				},
+				{
+					name: "技能",
+					url: "/skills/",
+					icon: "material-symbols:psychology",
 				},
 				{
 					name: "时间线",
@@ -444,17 +444,17 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 };
 
 export const commentConfig: CommentConfig = {
-	enable: false, // 启用评论功能。当设置为 false 时，评论组件将不会显示在文章区域。
-	system: "twikoo", // 评论系统选择: "twikoo" | "giscus"
+	enable: true, // 启用评论功能。当设置为 false 时，评论组件将不会显示在文章区域。
+	system: "giscus", // 评论系统选择: "twikoo" | "giscus"
 	twikoo: {
 		envId: "https://twikoo.vercel.app",
 		lang: SITE_LANG,
 	},
 	giscus: {
-		repo: "your-github-username/your-repo-name",
-		repoId: "your-repo-id",
+		repo: "ayyyyano/ayyyyano",
+		repoId: "R_kgDONl1aKw",
 		category: "Announcements",
-		categoryId: "your-category-id",
+		categoryId: "DIC_kwDONl1aK84DAeEc",
 		mapping: "pathname",
 		strict: "0",
 		reactionsEnabled: "1",
@@ -472,7 +472,7 @@ export const shareConfig: ShareConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "", // 公告标题，填空使用i18n字符串Key.announcement
-	content: "本站近期由 NotionNext 迁移至 Astro, 原站点更换为 notion.nekro.top, 若发现网站内容有误, 请及时告知我修改。", // 公告内容
+	content: "站点迁移中, 后续更新将在此处发布。Notion 会继续保留一段时间: https://notion.nekro.top/", // 公告内容
 	closable: true, // 允许用户关闭公告
 	link: {
 		enable: true, // 启用链接
@@ -489,7 +489,7 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	mode: "local", // 音乐播放器模式，可选 "local" 或 "meting"
 	meting_api:
 		"https://meting-api.nekro.top/api?server=:server&type=:type&id=:id&auth=:auth&r=:r", // Meting API 地址
-	id: "14164869977", // 歌单ID
+	id: "13005431615", // 歌单ID
 	server: "netease", // 音乐源服务器。有的meting的api源支持更多平台,一般来说,netease=网易云音乐, tencent=QQ音乐, kugou=酷狗音乐, xiami=虾米音乐, baidu=百度音乐
 	type: "playlist", // 播单类型
 };
@@ -665,8 +665,8 @@ export const sakuraConfig: SakuraConfig = {
 
 // Pio 看板娘配置
 export const pioConfig: import("./types/config").PioConfig = {
-	enable: false, // 禁用看板娘以提升性能
-	models: ["/pio/models/pio/model.json"], // 默认模型路径
+	enable: true, // 禁用看板娘以提升性能
+	models: ["/pio/models/airi/07airi_normal_3.0_f_t03.model3.json"], // 默认模型路径
 	position: "left", // 模型位置
 	width: 280, // 默认宽度
 	height: 250, // 默认高度

@@ -8,6 +8,7 @@ category: 存档备份
 licenseName: "CC BY-NC-SA 4.0"
 draft: false
 date: 2026-02-02
+image: "./cover.jpg"
 pubDate: 2026-02-02
 permalink: "n1-atv-openwrt"
 ---

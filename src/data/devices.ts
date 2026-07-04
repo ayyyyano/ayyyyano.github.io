@@ -49,7 +49,7 @@ export const devicesData: DeviceCategory = {
 			specs: "星空灰 / 16G + 512GB",
 			description:
 				"R7-7840HS + 3.2K 120Hz 屏幕",
-			link: "https://consumer.huawei.com/cn/routers/ax3/",
+			link: "https://www.mi.com/redmi-books/pro-15-amd/specs",
 		},
 	],
 	Router: [

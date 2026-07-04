@@ -8,6 +8,7 @@ category: 心情随笔
 licenseName: "CC BY-NC-SA 4.0"
 draft: false
 date: 2026-05-31
+image: "./cover.png"
 pubDate: 2026-05-31
 permalink: "pjsk-airi6"
 ---
