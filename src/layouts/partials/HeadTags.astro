@@ -77,7 +77,7 @@ const favicons: Favicon[] =
 <meta name="twitter:description" content={description || title} />
 
 <!-- Viewport and Generator -->
-<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Favicons -->
@@ -146,7 +146,8 @@ const favicons: Favicon[] =
 
 	// 自动缩放逻辑 (Moved from MainGridLayout to here for earlier execution)
 	(function () {
-		if (pageScaling && pageScaling.enable) {
+		if (pageScaling && pageScaling.enable && !window.__pageScalingInitialized) {
+			window.__pageScalingInitialized = true;
 			function adjustPageScale() {
 				const isTouch =
 					(window.matchMedia &&
