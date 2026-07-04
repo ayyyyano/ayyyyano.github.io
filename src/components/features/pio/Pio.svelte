@@ -23,7 +23,7 @@
 	let dialogTimer: ReturnType<typeof setTimeout> | null = null;
 	let status = "idle";
 	let statusMsg = "";
-	let shouldRender = !pioConfig.hiddenOnMobile || !window.matchMedia("(max-width: 1280px)").matches;
+	let shouldRender = !pioConfig.hiddenOnMobile;
 
 	function setStatus(s: string, msg = "") {
 		status = s;
