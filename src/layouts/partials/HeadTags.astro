@@ -147,24 +147,32 @@ const favicons: Favicon[] =
 	// 自动缩放逻辑 (Moved from MainGridLayout to here for earlier execution)
 	(function () {
 		if (pageScaling && pageScaling.enable) {
-			// 检测一次触摸设备，永久标记：触摸设备永远不缩放
-			var isTouchDevice = (window.matchMedia && (window.matchMedia("(pointer:coarse)").matches || window.matchMedia("(hover: none)").matches)) || ("ontouchstart" in window);
+			// 综合检测触摸/移动设备：任一条件满足即为移动设备，永不缩放
+			var isMobileDevice = (
+				("ontouchstart" in window) ||
+				(window.matchMedia && window.matchMedia("(pointer:coarse)").matches) ||
+				(window.matchMedia && window.matchMedia("(hover: none)").matches) ||
+				(window.matchMedia && window.matchMedia("(max-device-width: 1280px)").matches) ||
+				(navigator.userAgent && /Mobi|Android|iPhone|iPod|iPad|Tablet|Mobile/i.test(navigator.userAgent))
+			);
+
+			if (isMobileDevice) {
+				// 移动设备：确保不缩放，且不绑定任何 resize 监听
+				document.documentElement.style.fontSize = "";
+				return;
+			}
 
 			var resizeTimer = null;
 			function adjustPageScale() {
-				if (isTouchDevice) {
-					document.documentElement.style.fontSize = "";
-					return;
-				}
 				var isPortrait = window.matchMedia && window.matchMedia("(orientation: portrait)").matches;
-				var isTabletLike = window.innerWidth <= 1280;
-				if (isTabletLike || isPortrait) {
+				var currentWidth = window.innerWidth;
+				if (currentWidth <= 1280 || isPortrait) {
 					document.documentElement.style.fontSize = "";
 					return;
 				}
 				var targetWidth = pageScaling.targetWidth || 2000;
-				var currentWidth = document.documentElement.clientWidth;
-				var scale = currentWidth / targetWidth;
+				var clientWidth = document.documentElement.clientWidth;
+				var scale = clientWidth / targetWidth;
 				if (scale > 1) scale = 1;
 				if (scale < 0.85) scale = 0.85;
 				document.documentElement.style.fontSize = scale * 100 + "%";
@@ -172,7 +180,6 @@ const favicons: Favicon[] =
 
 			adjustPageScale();
 
-			// 用 debounce 避免 resize 频繁触发导致布局抖动
 			window.addEventListener("resize", function () {
 				if (resizeTimer) clearTimeout(resizeTimer);
 				resizeTimer = setTimeout(adjustPageScale, 150);
