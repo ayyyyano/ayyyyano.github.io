@@ -147,49 +147,41 @@ const favicons: Favicon[] =
 	// 自动缩放逻辑 (Moved from MainGridLayout to here for earlier execution)
 	(function () {
 		if (pageScaling && pageScaling.enable) {
-			// 综合检测触摸/移动设备：任一条件满足即为移动设备，永不缩放
-			var isMobileDevice = (
-				("ontouchstart" in window) ||
-				(window.matchMedia && window.matchMedia("(pointer:coarse)").matches) ||
-				(window.matchMedia && window.matchMedia("(hover: none)").matches) ||
-				(window.matchMedia && window.matchMedia("(max-device-width: 1280px)").matches) ||
-				(navigator.userAgent && /Mobi|Android|iPhone|iPod|iPad|Tablet|Mobile/i.test(navigator.userAgent))
-			);
-
-			if (isMobileDevice) {
-				// 移动设备：确保不缩放，且不绑定任何 resize 监听
-				document.documentElement.style.fontSize = "";
-				return;
-			}
-
-			var resizeTimer = null;
 			function adjustPageScale() {
-				var isPortrait = window.matchMedia && window.matchMedia("(orientation: portrait)").matches;
-				var currentWidth = window.innerWidth;
-				if (currentWidth <= 1280 || isPortrait) {
+				const isTouch =
+					(window.matchMedia &&
+						(window.matchMedia("(pointer:coarse)").matches ||
+							window.matchMedia("(hover: none)").matches)) ||
+					"ontouchstart" in window;
+				const isPortrait =
+					window.matchMedia &&
+					window.matchMedia("(orientation: portrait)").matches;
+				const isTabletLike = isTouch || window.innerWidth <= 1280;
+				if (isTabletLike || isPortrait) {
 					document.documentElement.style.fontSize = "";
 					return;
 				}
-				var targetWidth = pageScaling.targetWidth || 2000;
-				var clientWidth = document.documentElement.clientWidth;
-				var scale = clientWidth / targetWidth;
-				if (scale > 1) scale = 1;
-				if (scale < 0.85) scale = 0.85;
-				document.documentElement.style.fontSize = scale * 100 + "%";
+				const targetWidth = pageScaling.targetWidth || 2000;
+				const currentWidth = document.documentElement.clientWidth;
+				let scale = currentWidth / targetWidth;
+				if (scale > 1) {
+					scale = 1;
+				}
+				if (scale < 0.85) {
+					scale = 0.85;
+				}
+				document.documentElement.style.fontSize = `${scale * 100}%`;
 			}
 
+			// 立即执行一次
 			adjustPageScale();
 
-			window.addEventListener("resize", function () {
-				if (resizeTimer) clearTimeout(resizeTimer);
-				resizeTimer = setTimeout(adjustPageScale, 150);
-			});
+			// 监听窗口大小变化
+			window.addEventListener("resize", adjustPageScale);
 
+			// Swup 页面切换后也需要检查
 			document.addEventListener("swup:page:view", adjustPageScale);
-			window.addEventListener("orientationchange", function () {
-				if (resizeTimer) clearTimeout(resizeTimer);
-				resizeTimer = setTimeout(adjustPageScale, 150);
-			});
+			window.addEventListener("orientationchange", adjustPageScale);
 		}
 	})();
 </script>

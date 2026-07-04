@@ -23,7 +23,6 @@
 	let dialogTimer: ReturnType<typeof setTimeout> | null = null;
 	let status = "idle";
 	let statusMsg = "";
-	let shouldRender = true;
 
 	function setStatus(s: string, msg = "") {
 		status = s;
@@ -178,10 +177,7 @@
 
 	onMount(() => {
 		if (!pioConfig.enable) return;
-		if (settings.hidden && window.matchMedia("(max-width: 1280px)").matches) {
-			shouldRender = false;
-			return;
-		}
+		if (settings.hidden && window.matchMedia("(max-width: 1280px)").matches) return;
 		setStatus("loading", "Loading PIXI...");
 		(async () => {
 			try {
@@ -200,7 +196,7 @@
 	});
 </script>
 
-{#if pioConfig.enable && shouldRender}
+{#if pioConfig.enable}
 	<div class={`pio-container ${settings.position}`} bind:this={container}>
 		<div class="pio-action">
 			<span class="pio-home" title="Home" on:click={() => window.location.href = "/"}></span>
