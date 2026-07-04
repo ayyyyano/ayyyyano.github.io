@@ -76,12 +76,13 @@
 			if (!PIXI.utils.EventEmitter && PIXI.EventEmitter) PIXI.utils.EventEmitter = PIXI.EventEmitter;
 			setStatus("loading", "Loading Cubism 4 Core...");
 			try {
-				await loadAndEval("/pio/static/live2dcubismcore.min.js");
+				await loadScript("/pio/static/live2dcubismcore.min.js");
 			} catch (e: any) {
-				setStatus("error", `cubism core eval failed: ${e?.message || e}`);
+				setStatus("error", `cubism core load failed: ${e?.message || e}`);
 				return;
 			}
-			setStatus("loading", "Loading pixi-live2d-display...");
+			const hasCore = !!(window as any).Live2DCubismCore;
+			setStatus("loading", `Core loaded: ${hasCore}; loading pixi-live2d-display...`);
 			try {
 				await loadAndEval("/pio/static/cubism4.min.js");
 			} catch (e: any) {
