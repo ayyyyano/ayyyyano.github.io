@@ -21,7 +21,14 @@
 	let app: any = null;
 	let model: any = null;
 	let dialogTimer: ReturnType<typeof setTimeout> | null = null;
-	let scriptsLoaded = false;
+	let status = "idle";
+	let statusMsg = "";
+
+	function setStatus(s: string, msg = "") {
+		status = s;
+		statusMsg = msg;
+		console.log("[Pio]", s, msg);
+	}
 
 	function randomItem(arr: string[]): string {
 		return arr[Math.floor(Math.random() * arr.length)];
@@ -36,25 +43,27 @@
 	}
 
 	function loadScript(src: string): Promise<void> {
-		return new Promise((resolve) => {
+		return new Promise((resolve, reject) => {
 			const el = document.createElement("script");
 			el.src = src;
 			el.onload = () => resolve();
-			el.onerror = () => { console.warn("Script failed:", src); resolve(); };
+			el.onerror = () => reject(new Error("Script load failed: " + src));
 			document.head.appendChild(el);
 		});
 	}
 
 	async function initLive2D() {
-		if (!canvas) return;
+		if (!canvas) {
+			setStatus("error", "Canvas not bound");
+			return;
+		}
 		try {
+			setStatus("loading", "Creating PIXI app...");
 			const PIXI = (window as any).PIXI;
-			const Live2D = PIXI.live2d;
-			if (!Live2D || !Live2D.Live2DModel) {
-				console.error("Live2D library not loaded on PIXI namespace");
-				return;
-			}
-			const Live2DModel = Live2D.Live2DModel;
+			if (!PIXI) { setStatus("error", "PIXI not on window"); return; }
+			if (!PIXI.live2d) { setStatus("error", "PIXI.live2d missing"); return; }
+			if (!PIXI.live2d.Live2DModel) { setStatus("error", "Live2DModel missing"); return; }
+			const Live2DModel = PIXI.live2d.Live2DModel;
 
 			app = new PIXI.Application({
 				view: canvas,
@@ -64,17 +73,24 @@
 				height: settings.height,
 				antialias: true,
 			});
+			if (!app) { setStatus("error", "PIXI.Application returned null"); return; }
 
+			setStatus("loading", "Loading model: " + settings.model[0]);
 			model = await Live2DModel.from(settings.model[0]);
+			if (!model) { setStatus("error", "Live2DModel.from returned null"); return; }
+
+			const mw = model.width || 0;
+			const mh = model.height || 0;
+			setStatus("loading", `Model loaded; size=${mw}x${mh}`);
+
 			app.stage.addChild(model);
 
-			const scale = Math.min(
-				app.screen.width / (model.width || 1),
-				app.screen.height / (model.height || 1),
-			) * 0.95;
+			const scale = mw && mh
+				? Math.min(app.screen.width / mw, app.screen.height / mh) * 0.95
+				: 0.4;
 			model.scale.set(scale);
-			model.x = ((app.screen.width - (model.width || 1) * scale) / 2) || 0;
-			model.y = ((app.screen.height - (model.height || 1) * scale) / 2) || 0;
+			model.x = (app.screen.width - (model.width || mw) * scale) / 2;
+			model.y = (app.screen.height - (model.height || mh) * scale) / 2;
 
 			model.on("hit", () => {
 				const defs = model?.internalModel?.motionManager?.definitions;
@@ -95,8 +111,9 @@
 			}
 
 			if (settings.mode === "draggable") setupDrag();
-		} catch (e) {
-			console.error("Live2D init failed:", e);
+			setStatus("ready", `Model visible; size=${mw}x${mh}`);
+		} catch (e: any) {
+			setStatus("error", String(e?.message || e));
 		}
 	}
 
@@ -104,45 +121,42 @@
 		if (!canvas || !model) return;
 		let dragging = false;
 		let sx = 0, sy = 0, ox = 0, oy = 0;
-
 		canvas.addEventListener("mousedown", (ev) => {
 			dragging = true;
 			sx = ev.clientX; sy = ev.clientY;
 			ox = model.x; oy = model.y;
 			container?.classList.add("active");
 		});
-
 		const move = (ev: MouseEvent) => {
 			if (!dragging) return;
 			model.x = ox + (ev.clientX - sx);
 			model.y = oy + (ev.clientY - sy);
 		};
-
-		const up = () => {
-			dragging = false;
-			container?.classList.remove("active");
-		};
-
+		const up = () => { dragging = false; container?.classList.remove("active"); };
 		window.addEventListener("mousemove", move);
 		window.addEventListener("mouseup", up);
 	}
 
-	onMount(async () => {
+	onMount(() => {
 		if (!pioConfig.enable) return;
 		if (settings.hidden && window.matchMedia("(max-width: 1280px)").matches) return;
-
-		try {
-			await loadScript("/pio/static/pixi.min.js");
-			await loadScript("/pio/static/cubism4.min.js");
-			scriptsLoaded = true;
-			setTimeout(() => initLive2D(), 200);
-		} catch (e) {
-			console.error("Failed to load Live2D scripts:", e);
-		}
+		setStatus("loading", "Loading scripts...");
+		(async () => {
+			try {
+				await loadScript("/pio/static/pixi.min.js");
+				setStatus("loading", "PIXI loaded; loading Live2D...");
+				await loadScript("/pio/static/cubism4.min.js");
+				setStatus("loading", "Live2D loaded; initializing...");
+				setTimeout(() => initLive2D(), 200);
+			} catch (e: any) {
+				setStatus("error", String(e?.message || e));
+			}
+		})();
 	});
 
 	onDestroy(() => {
 		if (app) { try { app.destroy(true); } catch (e) { /* ignore */ } }
+		if (dialogTimer) clearTimeout(dialogTimer);
 	});
 </script>
 
@@ -157,6 +171,7 @@
 		<div class="pio-dialog" bind:this={dialogEl}></div>
 		<div class="pio-show" on:click={() => { container?.classList.remove("pio-hidden"); if (model) model.visible = true; }}></div>
 		<canvas id="pio" bind:this={canvas} width={settings.width} height={settings.height}></canvas>
+		<div class="pio-status" data-status={status}>{status}: {statusMsg}</div>
 	</div>
 {/if}
 
@@ -165,9 +180,7 @@
 	.pio-container .pio-show { left: -1em; bottom: 1em; width: 3em; height: 3em; display: none; cursor: pointer; position: absolute; border-radius: 3em; border: 3px solid #fff; transition: transform 0.3s; background: url(/pio/static/avatar.jpg) center / contain; }
 	.pio-container.pio-hidden .pio-show { display: block; }
 	.pio-container.pio-hidden .pio-show:hover { transform: translateX(0.5em); }
-	.pio-container.pio-hidden #pio,
-	.pio-container.pio-hidden .pio-action,
-	.pio-container.pio-hidden .pio-dialog { display: none; }
+	.pio-container.pio-hidden #pio, .pio-container.pio-hidden .pio-action, .pio-container.pio-hidden .pio-dialog, .pio-container.pio-hidden .pio-status { display: none; }
 	.pio-container.left { left: 0; }
 	.pio-container.right { right: 0; }
 	.pio-container.active { cursor: move; }
@@ -185,5 +198,22 @@
 	.pio-container.right .pio-dialog { right: 1em; }
 	.pio-container .pio-dialog.active { opacity: 1; visibility: visible; }
 	#pio { vertical-align: middle; }
-	@media screen and (max-width: 768px) { #pio { width: 8em; } .pio-container { pointer-events: none; } }
+	.pio-status {
+		position: absolute;
+		bottom: 100%;
+		left: 0;
+		margin-bottom: 4px;
+		padding: 4px 8px;
+		background: rgba(0, 0, 0, 0.7);
+		color: #fff;
+		font-size: 11px;
+		font-family: monospace;
+		max-width: 280px;
+		border-radius: 4px;
+		word-break: break-all;
+		pointer-events: none;
+	}
+	.pio-status[data-status="ready"] { background: rgba(0, 130, 0, 0.7); }
+	.pio-status[data-status="error"] { background: rgba(200, 0, 0, 0.85); }
+	.pio-status[data-status="loading"] { background: rgba(0, 80, 160, 0.7); }
 </style>
