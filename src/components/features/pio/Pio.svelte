@@ -202,12 +202,11 @@
 			<span class="pio-home" title="Home" on:click={() => window.location.href = "/"}></span>
 			<span class="pio-skin" title="Skin" on:click={() => { const s = settings.dialog?.skin; if (s?.length) showDialog(randomItem(s)); }}></span>
 			<span class="pio-info" title="Info" on:click={() => { if (settings.dialog?.link) window.open(settings.dialog.link, "_blank"); }}></span>
-			<span class="pio-close" title="Close" on:click={() => { if (settings.dialog?.close) showDialog(settings.dialog.close); container?.classList.add("pio-hidden"); if (model) model.visible = false; }}></span>
+			<span class="pio-close" title="Close" on:click={() => { if (settings.dialog?.close) showDialog(settings.dialog.close); container?.classList.add("pio-hidden"); if (app) app.ticker.stop(); }}></span>
 		</div>
 		<div class="pio-dialog" bind:this={dialogEl}></div>
-		<div class="pio-show" on:click={() => { container?.classList.remove("pio-hidden"); if (model) model.visible = true; }}></div>
+		<div class="pio-show" on:click={() => { container?.classList.remove("pio-hidden"); if (app) app.ticker.start(); }}></div>
 		<canvas id="pio" bind:this={canvas} width={settings.width} height={settings.height}></canvas>
-		<div class="pio-status" data-status={status}>{status}: {statusMsg}</div>
 	</div>
 {/if}
 
@@ -234,22 +233,4 @@
 	.pio-container.right .pio-dialog { right: 1em; }
 	.pio-container .pio-dialog.active { opacity: 1; visibility: visible; }
 	#pio { vertical-align: middle; }
-	.pio-status {
-		position: absolute;
-		bottom: 100%;
-		left: 0;
-		margin-bottom: 4px;
-		padding: 4px 8px;
-		background: rgba(0, 0, 0, 0.7);
-		color: #fff;
-		font-size: 11px;
-		font-family: monospace;
-		max-width: 280px;
-		border-radius: 4px;
-		word-break: break-all;
-		pointer-events: none;
-	}
-	.pio-status[data-status="ready"] { background: rgba(0, 130, 0, 0.7); }
-	.pio-status[data-status="error"] { background: rgba(200, 0, 0, 0.85); }
-	.pio-status[data-status="loading"] { background: rgba(0, 80, 160, 0.7); }
 </style>
