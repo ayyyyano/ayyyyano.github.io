@@ -104,6 +104,8 @@
 				width: settings.width,
 				height: settings.height,
 				antialias: true,
+				resolution: window.devicePixelRatio || 2,
+				autoDensity: true,
 			});
 			if (!app) { setStatus("error", "PIXI.Application returned null"); return; }
 
@@ -111,18 +113,18 @@
 			model = await Live2DModel.from(settings.model[0]);
 			if (!model) { setStatus("error", "Live2DModel.from returned null"); return; }
 
-			const mw = model.width || 0;
-			const mh = model.height || 0;
-			setStatus("loading", `Model loaded; size=${mw}x${mh}`);
-
 			app.stage.addChild(model);
 
-			const scale = mw && mh
-				? Math.min(app.screen.width / mw, app.screen.height / mh) * 0.95
-				: 0.4;
+			const logicalW = settings.width;
+			const logicalH = settings.height;
+			const modelW = model.width / model.scale.x;
+			const modelH = model.height / model.scale.y;
+			const scale = Math.min(logicalW / modelW, logicalH / modelH) * 0.9;
 			model.scale.set(scale);
-			model.x = (app.screen.width - (model.width || mw) * scale) / 2;
-			model.y = (app.screen.height - (model.height || mh) * scale) / 2;
+			model.x = (logicalW - modelW * scale) / 2;
+			model.y = (logicalH - modelH * scale) / 2;
+
+			setStatus("ready", `Model ready; scale=${scale.toFixed(3)}`);
 
 			model.on("hit", () => {
 				const defs = model?.internalModel?.motionManager?.definitions;
@@ -143,7 +145,6 @@
 			}
 
 			if (settings.mode === "draggable") setupDrag();
-			setStatus("ready", `Model visible; size=${mw}x${mh}`);
 		} catch (e: any) {
 			setStatus("error", String(e?.message || e));
 		}
