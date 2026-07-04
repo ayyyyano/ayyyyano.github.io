@@ -670,8 +670,8 @@ export const pioConfig: import("./types/config").PioConfig = {
 	position: "left", // 模型位置
 	width: 280, // 默认宽度
 	height: 250, // 默认高度
-	mode: "draggable", // 默认为可拖拽模式
-	hiddenOnMobile: true, // 默认在移动设备上隐藏
+	mode: "fixed", // 默认为可拖拽模式
+	hiddenOnMobile: false, // 默认在移动设备上隐藏
 	dialog: {
 		welcome: "Welcome to Nekro's Blog!", // 欢迎词
 		touch: [
@@ -683,7 +683,7 @@ export const pioConfig: import("./types/config").PioConfig = {
 		home: "Click here to go back to homepage!", // 首页提示
 		skin: ["Want to see my new outfit?", "The new outfit looks great~"], // 换装提示
 		close: "QWQ See you next time~", // 关闭提示
-		link: "https://github.com/ayyyyano/", // 关于链接
+		link: "https://space.bilibili.com/501335897", // 关于链接
 	},
 };
 
