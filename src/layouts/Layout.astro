@@ -187,15 +187,6 @@ if (siteConfig.font) {
 			}}
 		></style>
 
-		<!-- Pio 看板娘样式 - 非渲染阻塞加载 -->
-		{
-			pioConfig.enable && (
-				<Fragment
-					set:html={`<link rel="stylesheet" href="/pio/static/pio.css" media="print" onload="this.media='all'" />`}
-				/>
-			)
-		}
-
 		<link
 			rel="alternate"
 			type="application/rss+xml"
