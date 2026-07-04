@@ -66,8 +66,10 @@
 			const live2dKeys = Object.keys(PIXI.live2d).join(",");
 			if (!PIXI.live2d.Live2DModel) {
 				const w = window as any;
-				const diag = w.__live2dDiag || "no diag";
-				setStatus("error", `Live2DModel missing; ${diag}`);
+				const diag = w.__live2dDiag || PIXI.live2d.__live2dDiag || "no diag";
+				const scripts = document.querySelectorAll('script[src*="cubism4"]').length;
+				const pixiScripts = document.querySelectorAll('script[src*="pixi"]').length;
+				setStatus("error", `Live2DModel missing; diag=${diag}; cubism4Scripts=${scripts}; pixiScripts=${pixiScripts}; live2dKeys=${live2dKeys}`);
 				return;
 			}
 			const Live2DModel = PIXI.live2d.Live2DModel;
