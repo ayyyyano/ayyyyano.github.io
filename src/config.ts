@@ -484,8 +484,8 @@ export const announcementConfig: AnnouncementConfig = {
 
 export const musicPlayerConfig: MusicPlayerConfig = {
 	enable: true, // 启用音乐播放器功能
-	showFloatingPlayer: true, // 显示悬浮播放器 UI
-	floatingEntryMode: "fab", // 悬浮入口模式："default" 为独立悬浮播放器，"fab" 为集成到通用 FAB 组
+	showFloatingPlayer: false, // 显示悬浮播放器 UI
+	floatingEntryMode: "default", // 悬浮入口模式："default" 为独立悬浮播放器，"fab" 为集成到通用 FAB 组
 	mode: "meting", // 音乐播放器模式，可选 "local" 或 "meting"
 	meting_api:
 		"https://meting-api.nekro.top/api?server=:server&type=:type&id=:id&auth=:auth&r=:r", // Meting API 地址
@@ -665,7 +665,7 @@ export const sakuraConfig: SakuraConfig = {
 
 // Pio 看板娘配置
 export const pioConfig: import("./types/config").PioConfig = {
-	enable: false, // 暂时禁用看板娘
+	enable: true, // 暂时禁用看板娘
 	models: ["/pio/models/airi/07airi_normal_3.0_f_t03.model3.json"], // 默认模型路径 (Cubism 4)
 	position: "left", // 模型位置
 	width: 280, // 默认宽度
