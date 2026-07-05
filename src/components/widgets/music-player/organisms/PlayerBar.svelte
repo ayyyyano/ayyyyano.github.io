@@ -73,7 +73,7 @@
 </script>
 
 <div
-	class="expanded-player card-base shadow-xl rounded-2xl p-4 transition-all duration-500 ease-in-out absolute bottom-0 right-0 w-80"
+	class="expanded-player card-base shadow-xl rounded-2xl p-4 transition-all duration-500 ease-in-out absolute bottom-0 right-0 w-80 overflow-hidden"
 	class:opacity-0={isHidden}
 	class:scale-95={isHidden}
 	class:pointer-events-none={isHidden}

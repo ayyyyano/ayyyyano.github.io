@@ -55,7 +55,7 @@
 			onclick={onCoverClick}
 		/>
 		<div
-			class="flex-1 min-w-0 cursor-pointer"
+			class="flex-1 min-w-0 overflow-hidden cursor-pointer"
 			onclick={onInfoClick}
 			onkeydown={(e) => {
 				if (e.key === "Enter" || e.key === " ") {
