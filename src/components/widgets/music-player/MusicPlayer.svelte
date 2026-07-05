@@ -384,7 +384,6 @@
 			max-width: 20rem;
 			min-width: 20rem;
 			user-select: none;
-			overflow: hidden;
 		}
 
 		:global(.mini-player) {

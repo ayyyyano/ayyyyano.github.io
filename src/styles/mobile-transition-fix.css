@@ -6,31 +6,6 @@
 
 /* 移动端页面切换性能优化 */
 @media (max-width: 768px) {
-  body {
-    overflow-x: hidden;
-  }
-
-  /* 确保所有内容不超出视口 */
-  #main-grid,
-  #swup-container,
-  .post-list-container,
-  .widget-container,
-  .card-base,
-  .prose,
-  [class*="card"],
-  .banner-container,
-  #top-row,
-  #navbar-wrapper,
-  .pio-container {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-
-  img, canvas, svg, video, iframe {
-    max-width: 100% !important;
-    height: auto;
-  }
-
   /* 为所有动画元素添加硬件加速 */
   .transition-main,
   .transition-leaving,
@@ -130,11 +105,11 @@
 
   /* 简化侧边栏动画 */
   #dynamic-sidebar {
-    transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
   }
 
   .widget-container {
-    transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
   }
 }
 

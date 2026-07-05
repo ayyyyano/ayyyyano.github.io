@@ -71,7 +71,7 @@
 </script>
 
 <div
-	class="fab-music-panel card-base shadow-xl rounded-2xl p-4 w-[20rem] max-w-[80vw] overflow-hidden"
+	class="fab-music-panel card-base shadow-xl rounded-2xl p-4 w-[20rem] max-w-[80vw]"
 >
 	<div class="fab-music-header">
 		<SidebarCover
