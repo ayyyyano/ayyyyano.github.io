@@ -19,8 +19,9 @@
 	const showFloatingPlayer = musicPlayerConfig.showFloatingPlayer;
 	const floatingEntryMode = musicPlayerConfig.floatingEntryMode ?? "default";
 	const useFabEntry = floatingEntryMode === "fab";
-	const shouldRenderFloatingUi =
-		showFloatingPlayer && musicPlayerConfig.enable;
+	let isMobile = false;
+	$: shouldRenderFloatingUi =
+		showFloatingPlayer && musicPlayerConfig.enable && !isMobile;
 	let unsubscribe: (() => void) | undefined;
 
 	function togglePlay() {
@@ -178,6 +179,8 @@
 	}
 
 	onMount(() => {
+		isMobile = window.matchMedia("(max-width: 768px)").matches;
+		if (isMobile) return;
 		unsubscribe = musicPlayerStore.subscribe((nextState) => {
 			state = nextState;
 		});
