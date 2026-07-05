@@ -54,11 +54,11 @@
 
   /* 优化侧边栏动画 */
   #dynamic-sidebar {
-    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 
   .widget-container {
-    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 
   /* 防止页面加载时的闪烁 */
@@ -69,7 +69,7 @@
 
   /* 优化网格布局切换 */
   #main-grid {
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
 
   /* 防止图片加载时的闪烁 */

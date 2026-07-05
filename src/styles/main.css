@@ -665,7 +665,7 @@ html {
 
 /* 确保过渡动画平滑 */
 .post-list-container {
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 /* 文章列表布局切换样式 */
@@ -723,7 +723,7 @@ html {
 
 /* 确保过渡动画平滑 */
 .post-list-container {
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 :root:not(.dark) .custom-md spoiler {
   --_spoiler-mask: color-mix(in oklch, var(--primary) 55%, white 45%);
