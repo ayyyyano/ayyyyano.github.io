@@ -53,6 +53,12 @@ html {
   text-size-adjust: 100%;
 }
 
+@media (max-width: 1279px) {
+  :root {
+    --page-width: 100%;
+  }
+}
+
 /* 页面顶部渐变高光效果 */
 .top-gradient-highlight {
   position: fixed;
