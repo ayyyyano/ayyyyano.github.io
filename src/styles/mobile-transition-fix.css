@@ -8,14 +8,27 @@
 @media (max-width: 768px) {
   body {
     overflow-x: hidden;
-    width: 100vw;
-    max-width: 100vw;
   }
 
-  html {
+  /* 确保所有内容不超出视口 */
+  #main-grid,
+  #swup-container,
+  .post-list-container,
+  .widget-container,
+  .card-base,
+  .prose,
+  [class*="card"],
+  .banner-container,
+  #top-row,
+  #navbar-wrapper,
+  .pio-container {
+    max-width: 100%;
     overflow-x: hidden;
-    width: 100vw;
-    max-width: 100vw;
+  }
+
+  img, canvas, svg, video, iframe {
+    max-width: 100% !important;
+    height: auto;
   }
 
   /* 为所有动画元素添加硬件加速 */
