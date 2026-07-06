@@ -307,13 +307,13 @@
 
 	<style>
 		@media (max-width: 768px) {
-			.music-player,
-			.music-player-fab-anchor,
-			.expanded-player,
-			.mini-player,
-			.playlist-panel,
-			.orb-player-container,
-			.fab-music-panel {
+			:global(.music-player),
+			:global(.music-player-fab-anchor),
+			:global(.expanded-player),
+			:global(.mini-player),
+			:global(.playlist-panel),
+			:global(.orb-player-container),
+			:global(.fab-music-panel) {
 				display: none !important;
 			}
 		}
