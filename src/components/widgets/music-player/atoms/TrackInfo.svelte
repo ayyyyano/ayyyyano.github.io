@@ -40,12 +40,12 @@
 </script>
 
 {#if size === "mini"}
-	<div class="flex-1 min-w-0">
+	<div class="flex-1 min-w-0 overflow-hidden">
 		<div class="text-sm font-medium text-90 truncate">{song.title}</div>
 		<div class="text-xs text-50 truncate">{song.artist}</div>
 	</div>
 {:else}
-	<div class="flex-1 min-w-0">
+	<div class="flex-1 min-w-0 overflow-hidden">
 		<div class="song-title text-lg font-bold text-90 truncate mb-1">
 			{song.title}
 		</div>

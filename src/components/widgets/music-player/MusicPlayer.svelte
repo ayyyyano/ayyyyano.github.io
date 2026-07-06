@@ -19,10 +19,8 @@
 	const showFloatingPlayer = musicPlayerConfig.showFloatingPlayer;
 	const floatingEntryMode = musicPlayerConfig.floatingEntryMode ?? "default";
 	const useFabEntry = floatingEntryMode === "fab";
-	const shouldRenderUi =
+	const shouldRenderFloatingUi =
 		showFloatingPlayer && musicPlayerConfig.enable;
-	let isMobile = false;
-	$: shouldRenderFloatingUi = shouldRenderUi && !isMobile;
 	let unsubscribe: (() => void) | undefined;
 
 	function togglePlay() {
@@ -184,7 +182,6 @@
 			state = nextState;
 		});
 		musicPlayerStore.initialize();
-		isMobile = window.matchMedia("(max-width: 768px)").matches;
 	});
 
 	onDestroy(() => {
@@ -197,9 +194,9 @@
 
 <svelte:window on:keydown={handleVolumeKeyDown} />
 
-{#if shouldRenderUi}
+{#if shouldRenderFloatingUi}
 	{#if state.showError}
-		<div class="fixed bottom-20 right-4 z-[60] max-w-sm">
+		<div class="fixed bottom-20 right-4 z-[60] max-w-sm overflow-hidden">
 			<div
 				class="bg-red-500 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 animate-slide-up"
 			>
@@ -308,9 +305,8 @@
 		</div>
 	{/if}
 
-	{#if !isMobile}
-		<style>
-			.music-player-fab-anchor {
+	<style>
+		.music-player-fab-anchor {
 			right: var(--fab-group-right, 1.5rem);
 			bottom: calc(
 				var(--fab-group-bottom, 10rem) +
@@ -642,5 +638,4 @@
 			border: none;
 		}
 	</style>
-	{/if}
 {/if}
