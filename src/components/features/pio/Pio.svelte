@@ -23,7 +23,7 @@
 	let dialogTimer: ReturnType<typeof setTimeout> | null = null;
 	let status = "idle";
 	let statusMsg = "";
-	let isMobile = false;
+	let isMobile = $state(false);
 
 	$effect(() => {
 		if (!pioConfig.enable || !container) return;
