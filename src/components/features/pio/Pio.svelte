@@ -3,7 +3,7 @@
 
 	import { pioConfig } from "@/config";
 
-	export let config: Record<string, any> = {};
+	let { config = {} }: { config?: Record<string, any> } = $props();
 
 	const settings = {
 		mode: config?.mode ?? pioConfig.mode,
