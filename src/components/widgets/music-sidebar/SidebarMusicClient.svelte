@@ -23,15 +23,19 @@
 	}
 
 	onMount(() => {
-		isMobile = window.matchMedia("(max-width: 768px)").matches;
+		const mql = window.matchMedia("(max-width: 768px)");
+		isMobile = mql.matches;
 		if (isMobile) return;
+		const handler = (e: MediaQueryListEvent) => { isMobile = e.matches; };
+		mql.addEventListener("change", handler);
 		window.addEventListener("music-sidebar:state", handleStateUpdate);
+		return () => mql.removeEventListener("change", handler);
 	});
 
 	$effect(() => {
-		if (isMobile && wrapper) {
+		if (wrapper) {
 			const card = wrapper.closest(".card-base");
-			if (card) (card as HTMLElement).style.display = "none";
+			if (card) (card as HTMLElement).style.display = isMobile ? "none" : "";
 		}
 	});
 
