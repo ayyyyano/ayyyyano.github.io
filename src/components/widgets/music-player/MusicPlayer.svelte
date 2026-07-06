@@ -306,6 +306,18 @@
 	{/if}
 
 	<style>
+		@media (max-width: 768px) {
+			.music-player,
+			.music-player-fab-anchor,
+			.expanded-player,
+			.mini-player,
+			.playlist-panel,
+			.orb-player-container,
+			.fab-music-panel {
+				display: none !important;
+			}
+		}
+
 		.music-player-fab-anchor {
 			right: var(--fab-group-right, 1.5rem);
 			bottom: calc(
