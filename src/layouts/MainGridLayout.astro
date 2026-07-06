@@ -114,17 +114,16 @@ const defaultPostListLayout = siteConfig.postListLayout?.defaultMode || "list";
 	<!-- Navbar -->
 	<slot slot="head" name="head" />
 	<div
+		id="navbar-wrapper"
+		class="pointer-events-auto fixed top-0 left-0 right-0 z-50 transition-all"
+	>
+		<Navbar />
+	</div>
+	<div
 		id="top-row"
 		class="z-50 pointer-events-none relative transition-all duration-700 max-w-(--page-width) px-0 md:px-4 mx-auto h-[4.5rem]"
 		class:list={[""]}
 	>
-		<div
-			id="navbar-wrapper"
-			class="pointer-events-auto fixed top-0 left-0 right-0 z-50 transition-all"
-		>
-			<Navbar />
-		</div>
-	</div>
 
 	<!-- Banner 组件 -->
 	<Banner
