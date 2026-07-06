@@ -189,7 +189,7 @@ export const siteConfig: SiteConfig = {
 		enable: true, // 总开关，启用目录功能
 		mobileTop: true, // 手机端顶部 TOC 按钮
 		desktopSidebar: true, // 电脑端右侧边栏 TOC
-		floating: true, // 悬浮 TOC 按钮
+		floating: false, // 悬浮 TOC 按钮
 		depth: 2, // 目录深度，1-6，1 表示只显示 h1 标题，2 表示显示 h1 和 h2 标题，依此类推
 		useJapaneseBadge: true, // 使用日语假名标记（あいうえお...）代替数字，开启后会将 1、2、3... 改为 あ、い、う...
 	},
@@ -637,7 +637,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 };
 
 export const sakuraConfig: SakuraConfig = {
-	enable: false, // 默认关闭樱花特效
+	enable: true, // 默认关闭樱花特效
 	sakuraNum: 21, // 樱花数量
 	limitTimes: -1, // 樱花越界限制次数，-1为无限循环
 	size: {
