@@ -222,10 +222,10 @@
 			<span class="pio-home" title="Home" on:click={() => window.location.href = "/"}></span>
 			<span class="pio-skin" title="Skin" on:click={() => { const s = settings.dialog?.skin; if (s?.length) showDialog(randomItem(s)); }}></span>
 			<span class="pio-info" title="Info" on:click={() => { if (settings.dialog?.link) window.open(settings.dialog.link, "_blank"); }}></span>
-			<span class="pio-close" title="Close" on:click={() => { if (settings.dialog?.close) showDialog(settings.dialog.close); container?.classList.add("pio-hidden"); if (app) app.ticker.stop(); }}></span>
+			<span class="pio-close" title="Close" on:click={() => { if (settings.dialog?.close) showDialog(settings.dialog.close); container?.classList.add("pio-hidden"); if (canvas) canvas.style.visibility = "hidden"; if (app) app.ticker.stop(); }}></span>
 		</div>
 		<div class="pio-dialog" bind:this={dialogEl}></div>
-		<div class="pio-show" on:click={() => { container?.classList.remove("pio-hidden"); if (app) app.ticker.start(); }}></div>
+		<div class="pio-show" on:click={() => { container?.classList.remove("pio-hidden"); if (canvas) canvas.style.visibility = "visible"; if (app) app.ticker.start(); }}></div>
 		<canvas id="pio" bind:this={canvas} width={settings.width} height={settings.height}></canvas>
 	</div>
 {/if}
@@ -235,7 +235,8 @@
 	.pio-container .pio-show { left: -1em; bottom: 1em; width: 3em; height: 3em; display: none; cursor: pointer; position: absolute; border-radius: 3em; border: 3px solid #fff; transition: transform 0.3s; background: url(/pio/static/avatar.jpg) center / contain; }
 	.pio-container.pio-hidden .pio-show { display: block; }
 	.pio-container.pio-hidden .pio-show:hover { transform: translateX(0.5em); }
-	.pio-container.pio-hidden #pio, .pio-container.pio-hidden .pio-action, .pio-container.pio-hidden .pio-dialog, .pio-container.pio-hidden .pio-status { display: none; }
+	.pio-container.pio-hidden #pio { visibility: hidden; }
+	.pio-container.pio-hidden .pio-action, .pio-container.pio-hidden .pio-dialog, .pio-container.pio-hidden .pio-status { display: none; }
 	.pio-container.left { left: 0; }
 	.pio-container.right { right: 0; }
 	.pio-container.active { cursor: move; }
