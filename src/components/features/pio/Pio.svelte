@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onDestroy, onMount } from "svelte";
+	import { onMount } from "svelte";
 
 	import { pioConfig } from "@/config";
 
@@ -23,6 +23,12 @@
 	let dialogTimer: ReturnType<typeof setTimeout> | null = null;
 	let status = "idle";
 	let statusMsg = "";
+	let isMobile = false;
+
+	$effect(() => {
+		if (!pioConfig.enable || !container) return;
+		container.style.display = isMobile ? "none" : "";
+	});
 
 	function setStatus(s: string, msg = "") {
 		status = s;
@@ -177,24 +183,38 @@
 
 	onMount(() => {
 		if (!pioConfig.enable) return;
-		if (settings.hidden && window.matchMedia("(max-width: 1280px)").matches) return;
+
+		const mql = window.matchMedia("(max-width: 1280px)");
+		const onResize = (e: MediaQueryListEvent | MediaQueryList) => {
+			isMobile = e.matches;
+		};
+		isMobile = mql.matches;
+		mql.addEventListener("change", onResize);
+
+		if (isMobile) return;
+
 		setStatus("loading", "Loading PIXI...");
+		let cancelled = false;
 		(async () => {
 			try {
 				await loadScript("/pio/static/pixi.min.js");
+				if (cancelled) return;
 				setStatus("loading", "PIXI loaded; initializing Live2D...");
-				setTimeout(() => initLive2D(), 100);
+				setTimeout(() => { if (!cancelled) initLive2D(); }, 100);
 			} catch (e: any) {
-				setStatus("error", String(e?.message || e));
+				if (!cancelled) setStatus("error", String(e?.message || e));
 			}
 		})();
+
+		return () => {
+			cancelled = true;
+			mql.removeEventListener("change", onResize);
+			if (app) { try { app.destroy(true); } catch (e) { /* ignore */ } }
+			if (dialogTimer) clearTimeout(dialogTimer);
+		};
 	});
 
-	onDestroy(() => {
-		if (app) { try { app.destroy(true); } catch (e) { /* ignore */ } }
-		if (dialogTimer) clearTimeout(dialogTimer);
-	});
-</script>
+	</script>
 
 {#if pioConfig.enable}
 	<div class={`pio-container ${settings.position}`} bind:this={container}>
