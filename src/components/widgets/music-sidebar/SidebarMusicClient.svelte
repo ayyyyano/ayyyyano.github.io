@@ -13,7 +13,8 @@
 
 	let state: MusicPlayerState = $state(musicPlayerStore.getState());
 	let showPlaylist = $state(false);
-
+	let isMobile = $state(false);
+	let wrapper: HTMLElement;
 	function handleStateUpdate(event: Event) {
 		const custom = event as CustomEvent<MusicPlayerState>;
 		if (custom.detail) {
@@ -22,7 +23,16 @@
 	}
 
 	onMount(() => {
+		isMobile = window.matchMedia("(max-width: 768px)").matches;
+		if (isMobile) return;
 		window.addEventListener("music-sidebar:state", handleStateUpdate);
+	});
+
+	$effect(() => {
+		if (isMobile && wrapper) {
+			const card = wrapper.closest(".card-base");
+			if (card) (card as HTMLElement).style.display = "none";
+		}
 	});
 
 	onDestroy(() => {
@@ -71,6 +81,8 @@
 	}
 </script>
 
+<div bind:this={wrapper} style:display={isMobile ? "none" : ""}>
+{#if !isMobile}
 <div class="music-sidebar-widget">
 	<div class="flex items-center gap-3 mb-2.5">
 		<SidebarCover
@@ -114,6 +126,8 @@
 		onClose={togglePlaylistView}
 		onPlaySong={playIndex}
 	/>
+</div>
+{/if}
 </div>
 
 <style>
