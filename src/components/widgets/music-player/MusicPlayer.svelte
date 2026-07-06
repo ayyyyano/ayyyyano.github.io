@@ -308,8 +308,9 @@
 		</div>
 	{/if}
 
-	<style>
-		.music-player-fab-anchor {
+	{#if !isMobile}
+		<style>
+			.music-player-fab-anchor {
 			right: var(--fab-group-right, 1.5rem);
 			bottom: calc(
 				var(--fab-group-bottom, 10rem) +
@@ -641,4 +642,5 @@
 			border: none;
 		}
 	</style>
+	{/if}
 {/if}
