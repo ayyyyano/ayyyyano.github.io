@@ -279,7 +279,7 @@ export const navBarConfig: NavBarConfig = {
 					name: "Bluesky",
 					url: "https://bsky.app/profile/nekro.top",
 					external: true,
-					icon: "line-md:bluesky-filled",
+					icon: "mingcute:bluesky-social-fill",
 				},
 				{
 					name: "Google 镜像",
@@ -483,7 +483,7 @@ export const announcementConfig: AnnouncementConfig = {
 };
 
 export const musicPlayerConfig: MusicPlayerConfig = {
-	enable: true, // 启用音乐播放器功能
+	enable: false, // 启用音乐播放器功能
 	showFloatingPlayer: false, // 显示悬浮播放器 UI
 	floatingEntryMode: "default", // 悬浮入口模式："default" 为独立悬浮播放器，"fab" 为集成到通用 FAB 组
 	mode: "meting", // 音乐播放器模式，可选 "local" 或 "meting"
@@ -665,7 +665,7 @@ export const sakuraConfig: SakuraConfig = {
 
 // Pio 看板娘配置
 export const pioConfig: import("./types/config").PioConfig = {
-	enable: false, // 看板娘
+	enable: true, // 看板娘
 	models: ["/pio/models/airi/07airi_normal_3.0_f_t03.model3.json"], // 默认模型路径 (Cubism 4)
 	position: "left", // 模型位置
 	width: 280, // 默认宽度
