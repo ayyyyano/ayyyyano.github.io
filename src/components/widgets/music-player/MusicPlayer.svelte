@@ -313,7 +313,8 @@
 			:global(.mini-player),
 			:global(.playlist-panel),
 			:global(.orb-player-container),
-			:global(.fab-music-panel) {
+			:global(.fab-music-panel),
+			:global(.music-sidebar-widget) {
 				display: none !important;
 			}
 		}

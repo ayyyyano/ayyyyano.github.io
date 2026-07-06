@@ -117,6 +117,12 @@
 </div>
 
 <style>
+	@media (max-width: 768px) {
+		.music-sidebar-widget {
+			display: none !important;
+		}
+	}
+
 	@media (max-width: 520px) {
 		.music-sidebar-widget {
 			min-width: 0;
